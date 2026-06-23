@@ -1,12 +1,13 @@
 import Image from "next/image";
 import FloatingText from "./components/floatingText";
+import StickyTimeline from "./components/timeline";
 
 // Hello from John Lloyd
 
 export default function Home() {
 	return (
 		<div className="flex flex-col items-center justify-center">
-			<div className="landing flex flex-col h-lvh w-9/10 items-center justify-center bg-radial from-denim-blue/60 to-60%">
+			<div className="landing flex flex-col h-lvh w-9/10 items-center justify-center bg-radial from-denim-blue/60 to-60% mb-10">
 				<div className="flex items-center justify-center gap-5">
 					<div className="flex flex-col items-center gap-10">
 						<FloatingText showText="Innovative">
@@ -55,6 +56,8 @@ export default function Home() {
 					John Lloyd Unida
 				</h3>
 			</div>
+
+			<StickyTimeline />
 		</div>
 	);
 }
