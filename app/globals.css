@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -14,12 +15,31 @@
 	--color-platinum-white: #e2e8f0;
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
+	--font-inter: "Inter", sans-serif;
+	--font-jetbrains-mono: "JetBrains Mono", monospace;
+	--animate-spin-slow: spin 20s linear infinite;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
 		--background: #0a0a0a;
 		--foreground: #ededed;
+	}
+}
+
+@layer utilities {
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+	}
+
+	.animate-float {
+		animation: float 2.5s ease-in-out infinite;
 	}
 }
 
