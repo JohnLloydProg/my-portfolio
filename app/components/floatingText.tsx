@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import type { JSAnimation } from "animejs";
+import { animate, random } from "animejs";
+import { useEffect, useRef, useState } from "react";
 
 interface FloatingTextProps {
 	showText: string;
@@ -11,12 +13,39 @@ export default function FloatingText({
 	showText,
 	children,
 }: FloatingTextProps) {
+	const animationRef = useRef<JSAnimation>(null);
+	const textRef = useRef<HTMLHeadingElement>(null);
+
 	const [isVisible, setIsVisible] = useState(false);
-	const [delay, setDelay] = useState(0);
 
 	useEffect(() => {
-		setDelay(Math.floor(Math.random() * 1000));
+		if (!textRef.current) return;
+
+		animationRef.current = animate(textRef.current, {
+			y: 30,
+			duration: 2000,
+			loop: true,
+			alternate: true,
+			ease: "inOutSine",
+			delay: random(100, 1000),
+			autoplay: false,
+		});
+
+		return () => {
+			if (!animationRef.current) return;
+			animationRef.current.revert();
+		};
 	}, []);
+
+	useEffect(() => {
+		if (!animationRef.current) return;
+
+		if (isVisible) {
+			animationRef.current.revert();
+		} else {
+			animationRef.current.restart();
+		}
+	}, [isVisible]);
 
 	return (
 		<button
@@ -26,8 +55,8 @@ export default function FloatingText({
 			type="button"
 		>
 			<h3
-				className={`text-3xl transition-colors duration-300 font-jetbrains-mono font-bold text-center ${isVisible ? "text-denim-blue" : "text-denim-blue/80 animate-float hover:text-denim-blue"}`}
-				style={{ animationDelay: `${delay}ms` }}
+				ref={textRef}
+				className={`showText text-3xl transition-colors duration-300 font-jetbrains-mono font-bold text-center ${isVisible ? "text-denim-blue" : "text-denim-blue/80 hover:text-denim-blue"}`}
 			>
 				{showText}
 			</h3>
