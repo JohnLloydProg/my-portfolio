@@ -1,6 +1,7 @@
 import Image from "next/image";
 import FloatingText from "./components/floatingText";
 import StickyTimeline from "./components/timeline";
+import ProjectShowcase from "./components/projectShowcase";
 
 // Hello from John Lloyd
 
@@ -58,6 +59,14 @@ export default function Home() {
 			</div>
 
 			<StickyTimeline />
+
+			<div className="projects flex flex-col items-center w-full h-[calc(100lvh-6rem)] pb-5 mt-10">
+				<h2 className="text-5xl font-inter font-bold text-platinum-white">
+					Highlight <span className="text-denim-blue">Projects</span>
+				</h2>
+
+				<ProjectShowcase />
+			</div>
 		</div>
 	);
 }

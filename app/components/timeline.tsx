@@ -132,7 +132,7 @@ export default function StickyTimeline() {
 
 	return (
 		<div ref={trackRef} className="relative w-full h-[400vh] bg-[#0B0C10]">
-			<div className="sticky flex flex-col w-full top-24 h-[calc(100lvh-8rem)] items-center">
+			<div className="sticky flex flex-col w-full top-24 h-[calc(100lvh-6rem)] items-center">
 				<h2 className="text-5xl font-inter font-bold text-platinum-white">
 					<span className="text-denim-blue">Career</span> &{" "}
 					<span className="text-denim-blue">Experience</span>
@@ -163,7 +163,6 @@ export default function StickyTimeline() {
 						})}
 					</div>
 				</div>
-
 
 				<div
 					ref={divRef}
