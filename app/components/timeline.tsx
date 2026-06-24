@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { milestone } from "../interfaces/milestone";
-import MilestoneContainer from "./milestoneContainer";
 import TimelineDot from "./timelineDot";
+import { animate, JSAnimation } from "animejs";
+import Image from "next/image";
 
 const milestones: milestone[] = [
 	{
@@ -59,6 +60,8 @@ export default function StickyTimeline() {
 	const [latest, setLatest] = useState(0);
 
 	const trackRef = useRef<HTMLDivElement>(null);
+	const divRef = useRef<HTMLDivElement>(null);
+	const animationRef = useRef<JSAnimation>(null);
 
 	const scrollCall = (index: number) => {
 		if (!trackRef.current) return;
@@ -109,6 +112,24 @@ export default function StickyTimeline() {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
+	useEffect(() => {
+		if (!divRef.current) return;
+
+		animationRef.current = animate(divRef.current, {
+			y: 200,
+			duration: 400,
+			reversed: true,
+			ease: "inOutSine",
+			opacity: 0,
+			scale: 0.5,
+			autoplay: true,
+		});
+		return () => {
+			if (!animationRef.current) return;
+			animationRef.current.revert();
+		};
+	}, [latest]);
+
 	return (
 		<div ref={trackRef} className="relative w-full h-[400vh] bg-[#0B0C10]">
 			<div className="sticky flex flex-col w-full top-24 h-[calc(100lvh-8rem)] items-center">
@@ -143,16 +164,31 @@ export default function StickyTimeline() {
 					</div>
 				</div>
 
-				<div className="relative mt-10">
-					{milestones.map((milestone, index) => {
-						return (
-							<MilestoneContainer
-								key={milestone.year}
-								milestone={milestone}
-								active={index === latest}
-							/>
-						);
-					})}
+
+				<div
+					ref={divRef}
+					className={`flex flex-col items-center shadow shadow-denim-blue border border-denim-blue/40 backdrop-blur-sm rounded-xl p-4 w-2xl bg-ocean-navy/90 mt-15`}
+				>
+					<h3 className="font-inter font-bold text-2xl text-platinum-white text-center">
+						{milestones[latest].position}
+					</h3>
+					<p className="font-inter text-center text-denim-blue text-lg">
+						{milestones[latest].company}
+					</p>
+
+					<p className="font-jetbrains-mono text-lg text-platinum-white text-center mt-5">
+						{milestones[latest].description}
+					</p>
+
+					{milestones[latest].logo && (
+						<Image
+							src={milestones[latest].logo}
+							alt={`${milestones[latest].company} logo`}
+							width={70}
+							height={70}
+							className="mt-10"
+						></Image>
+					)}
 				</div>
 			</div>
 		</div>
