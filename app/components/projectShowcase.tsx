@@ -66,7 +66,7 @@ export default function ProjectShowcase() {
 							<button
 								key={project.title}
 								type="button"
-								className={`cursor-pointer font-inter not-last:mb-3 text-left transition-colors border-l-2 px-4 py-2 ${project === selected ? "border-denim-blue bg-white/5 text-platinum-white" : "border-transparent text-[#8FA0B5] hover:text-platinum-white hover:bg-white/5"}`}
+								className={`cursor-pointer font-inter not-last:mb-3 text-left transition-colors border-l-2 px-4 py-2 ${project === selected ? "border-denim-blue bg-white/5 text-platinum-white" : "border-transparent text-[#8FA0B5] hover:text-platinum-white hover:border-denim-blue hover:bg-white/5"}`}
 								onClick={() => setSelected(project)}
 							>
 								{project.title}

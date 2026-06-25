@@ -116,7 +116,7 @@ export default function Home() {
 				<ProjectShowcase />
 			</div>
 
-			<div className="projects flex flex-col items-center w-full pb-10 mt-20 overflow-hidden">
+			<div className="projects flex flex-col items-center w-full mb-10 pb-10 mt-20 overflow-hidden">
 				<h2 className="text-5xl font-inter font-bold text-platinum-white">
 					Tech <span className="text-denim-blue">Stack</span>
 				</h2>
