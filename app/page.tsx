@@ -2,7 +2,7 @@ import FloatingText from "./components/floatingText";
 import HorizontalSlide, { type tech } from "./components/horizontalSlide";
 import Image from "next/image";
 import ProjectShowcase from "./components/projectShowcase";
-import StickyTimeline from "./components/timeline";
+import StickyTimeline from "./components/timeline/timeline";
 import { TechCard } from "./components/techCard";
 import TypewriterText from "./components/typewriterText";
 

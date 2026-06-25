@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { milestone } from "../interfaces/milestone";
+import type { milestone } from "../../interfaces/milestone";
 import TimelineDot from "./timelineDot";
-import { animate, type JSAnimation } from "animejs";
+import { animate } from "animejs";
 import Image from "next/image";
 
 const milestones: milestone[] = [
@@ -60,8 +60,6 @@ export default function StickyTimeline() {
 	const [latest, setLatest] = useState(0);
 
 	const trackRef = useRef<HTMLDivElement>(null);
-	const divRef = useRef<HTMLDivElement>(null);
-	const animationRef = useRef<JSAnimation>(null);
 	const activeLineRef = useRef<HTMLDivElement>(null);
 
 	const scrollCall = (index: number) => {
@@ -120,21 +118,33 @@ export default function StickyTimeline() {
 	}, []);
 
 	useEffect(() => {
-		if (!divRef.current) return;
+		const total = milestones.length;
 
-		animationRef.current = animate(divRef.current, {
-			y: 200,
-			duration: 400,
-			reversed: true,
-			ease: "inOutSine",
-			opacity: 0,
-			scale: 0.5,
-			autoplay: true,
+		milestones.forEach((_, i) => {
+			let offset = (i - latest) % total;
+
+			if (offset > Math.floor(total / 2)) offset -= total;
+			if (offset < -Math.floor(total / 2)) offset += total;
+
+			const isCenter = offset === 0;
+			const xPos = offset * 110;
+			const scaleSize = isCenter ? 1 : 0.8;
+			const fade = isCenter ? 1 : Math.abs(offset) === 1 ? 0.5 : 0;
+			const zLevel = 10 - Math.abs(offset);
+
+			const cardElement = document.getElementById(`milestone-card-${i}`);
+			if (cardElement) {
+				cardElement.style.zIndex = zLevel.toString();
+			}
+
+			animate(`#milestone-card-${i}`, {
+				translateX: `${xPos}%`,
+				scale: scaleSize,
+				opacity: fade,
+				duration: 600,
+				ease: "outExpo",
+			});
 		});
-		return () => {
-			if (!animationRef.current) return;
-			animationRef.current.revert();
-		};
 	}, [latest]);
 
 	return (
@@ -170,31 +180,44 @@ export default function StickyTimeline() {
 						})}
 					</div>
 				</div>
+				<div className="overflow-hidden w-full flex justify-center">
+					<div className="relative w-full max-w-4xl h-87.5 mt-15 flex justify-center items-center  overflow-x-visible">
+						{milestones.map((milestone, index) => (
+							<div
+								id={`milestone-card-${index}`}
+								key={milestone.year}
+								className={`absolute flex flex-col items-center shadow shadow-denim-blue border border-denim-blue/40 backdrop-blur-sm rounded-xl p-6 w-2xl bg-ocean-navy/90 ${index === 0 ? "opacity-100" : "opacity-0"}`}
+								style={{
+									transform:
+										index === 0
+											? "translateX(0%) scale(1)"
+											: "translateX(110%) scale(0.8)",
+								}}
+							>
+								<h3 className="font-inter font-bold text-2xl text-platinum-white text-center">
+									{milestone.position}
+								</h3>
 
-				<div
-					ref={divRef}
-					className={`flex flex-col items-center shadow shadow-denim-blue border border-denim-blue/40 backdrop-blur-sm rounded-xl p-4 w-2xl bg-ocean-navy/90 mt-15`}
-				>
-					<h3 className="font-inter font-bold text-2xl text-platinum-white text-center">
-						{milestones[latest].position}
-					</h3>
-					<p className="font-inter text-center text-denim-blue text-lg">
-						{milestones[latest].company}
-					</p>
+								<p className="font-inter text-center text-denim-blue text-lg">
+									{milestone.company}
+								</p>
 
-					<p className="font-jetbrains-mono text-lg text-platinum-white text-center mt-5">
-						{milestones[latest].description}
-					</p>
+								<p className="font-jetbrains-mono text-lg text-platinum-white text-center mt-5">
+									{milestone.description}
+								</p>
 
-					{milestones[latest].logo && (
-						<Image
-							src={milestones[latest].logo}
-							alt={`${milestones[latest].company} logo`}
-							width={70}
-							height={70}
-							className="mt-10"
-						></Image>
-					)}
+								{milestone.logo && (
+									<Image
+										src={milestone.logo}
+										alt={`${milestone.company} logo`}
+										width={70}
+										height={70}
+										className="mt-10"
+									/>
+								)}
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		</div>
