@@ -1,9 +1,57 @@
-import Image from "next/image";
 import FloatingText from "./components/floatingText";
-import StickyTimeline from "./components/timeline";
+import HorizontalSlide, { type tech } from "./components/horizontalSlide";
+import Image from "next/image";
 import ProjectShowcase from "./components/projectShowcase";
+import StickyTimeline from "./components/timeline";
+import { TechCard } from "./components/techCard";
 
 // Hello from John Lloyd
+
+const languages: tech[] = [
+	{
+		name: "Python",
+		img: "/python-logo.svg",
+		experience: 3,
+	},
+	{
+		name: "Java",
+		img: "/java-logo.svg",
+		experience: 2,
+	},
+	{
+		name: "Javascript",
+		img: "/javascript-logo.svg",
+		experience: 2,
+	},
+	{
+		name: "CSS",
+		img: "/css-logo.svg",
+		experience: 2,
+	},
+];
+
+const frameworks: tech[] = [
+	{
+		name: "Django",
+		img: "/django-logo.svg",
+		experience: 3,
+	},
+	{
+		name: "Springbot",
+		img: "/spring-boot-logo.svg",
+		experience: 3,
+	},
+	{
+		name: "Angular",
+		img: "/angular-logo.svg",
+		experience: 3,
+	},
+	{
+		name: "React",
+		img: "/react-logo.svg",
+		experience: 3,
+	},
+];
 
 export default function Home() {
 	return (
@@ -60,12 +108,29 @@ export default function Home() {
 
 			<StickyTimeline />
 
-			<div className="projects flex flex-col items-center w-full h-[calc(100lvh-6rem)] pb-5 mt-10">
+			<div className="projects flex flex-col items-center w-full h-[calc(100lvh-6rem)] mt-10">
 				<h2 className="text-5xl font-inter font-bold text-platinum-white">
 					Highlight <span className="text-denim-blue">Projects</span>
 				</h2>
 
 				<ProjectShowcase />
+			</div>
+
+			<div className="projects flex flex-col items-center w-full pb-10 mt-20 overflow-hidden">
+				<h2 className="text-5xl font-inter font-bold text-platinum-white">
+					Tech <span className="text-denim-blue">Stack</span>
+				</h2>
+
+				<HorizontalSlide className="mt-10">
+					{languages.map((item) => {
+						return <TechCard key={item.name} item={item} />;
+					})}
+				</HorizontalSlide>
+				<HorizontalSlide className="mt-5" delay={1000}>
+					{frameworks.map((item) => {
+						return <TechCard key={item.name} item={item} />;
+					})}
+				</HorizontalSlide>
 			</div>
 		</div>
 	);
