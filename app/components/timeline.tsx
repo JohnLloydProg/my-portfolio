@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { milestone } from "../interfaces/milestone";
 import TimelineDot from "./timelineDot";
-import { animate, JSAnimation } from "animejs";
+import { animate, type JSAnimation } from "animejs";
 import Image from "next/image";
 
 const milestones: milestone[] = [
@@ -62,6 +62,7 @@ export default function StickyTimeline() {
 	const trackRef = useRef<HTMLDivElement>(null);
 	const divRef = useRef<HTMLDivElement>(null);
 	const animationRef = useRef<JSAnimation>(null);
+	const activeLineRef = useRef<HTMLDivElement>(null);
 
 	const scrollCall = (index: number) => {
 		if (!trackRef.current) return;
@@ -87,7 +88,7 @@ export default function StickyTimeline() {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			if (!trackRef.current) return;
+			if (!trackRef.current || !activeLineRef.current) return;
 
 			const rect = trackRef.current.getBoundingClientRect();
 			const windowHeight = window.innerHeight;
@@ -104,6 +105,12 @@ export default function StickyTimeline() {
 
 			progress = Math.max(0, Math.min(1, progress));
 			setScrollProgress(progress);
+
+			animate(activeLineRef.current, {
+				width: `${progress * 100}%`,
+				duration: 600,
+				ease: "outExpo",
+			});
 		};
 
 		window.addEventListener("scroll", handleScroll, { passive: true });
@@ -142,8 +149,8 @@ export default function StickyTimeline() {
 					<div className="absolute top-3 left-4 md:left-8 right-4 md:right-8 h-1 bg-ocean-navy rounded-full z-0" />
 
 					<div
+						ref={activeLineRef}
 						className="absolute top-3 left-4 md:left-8 h-1 bg-denim-blue rounded-full z-10 transition-all duration-75 ease-out"
-						style={{ width: `calc(${scrollProgress * 100}% - 2rem)` }}
 					/>
 
 					<div className="relative z-20 flex justify-between w-full">
