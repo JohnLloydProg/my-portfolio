@@ -12,10 +12,14 @@ export interface tech {
 export default function HorizontalSlide({
 	className = "",
 	delay = 0,
+	pauseOnHover = true,
+	reverse = false,
 	children,
 }: {
-	className: string;
+	className?: string;
 	delay?: number;
+	pauseOnHover?: boolean;
+	reverse?: boolean;
 	children?: React.ReactNode;
 }) {
 	const divRef = useRef<HTMLDivElement>(null);
@@ -29,6 +33,7 @@ export default function HorizontalSlide({
 			duration: 15000,
 			ease: "linear",
 			delay: delay,
+			reversed: reverse,
 			loop: true,
 		});
 
@@ -43,17 +48,20 @@ export default function HorizontalSlide({
 			<div
 				role="dialog"
 				ref={divRef}
-				className="flex w-max"
-				onMouseEnter={() => animationRef.current?.pause()}
-				onMouseLeave={() => animationRef.current?.play()}
+				className="flex w-max h-full"
+				onMouseEnter={() => {
+					pauseOnHover ? animationRef.current?.pause() : "";
+				}}
+				onMouseLeave={() => {
+					pauseOnHover ? animationRef.current?.play() : "";
+				}}
 			>
-				<div className="item-container flex gap-10 pr-10">{children}</div>
-				<div className="item-container flex gap-10 pr-10">{children}</div>
-			</div>
-
-			<div className="absolute top-0 left-0 w-full h-full z-10 flex pointer-events-none">
-				<div className="w-full h-full bg-linear-to-r from-obsidian-black to-90%"></div>
-				<div className="w-full h-full bg-linear-to-l from-obsidian-black to-90%"></div>
+				<div className="item-container h-full flex gap-10 pr-10 items-center">
+					{children}
+				</div>
+				<div className="item-container h-full flex gap-10 pr-10 items-center">
+					{children}
+				</div>
 			</div>
 		</div>
 	);

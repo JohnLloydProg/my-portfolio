@@ -4,6 +4,7 @@ import Image from "next/image";
 import ProjectShowcase from "./components/projectShowcase";
 import StickyTimeline from "./components/timeline";
 import { TechCard } from "./components/techCard";
+import TypewriterText from "./components/typewriterText";
 
 // Hello from John Lloyd
 
@@ -101,9 +102,9 @@ export default function Home() {
 						</FloatingText>
 					</div>
 				</div>
-				<h3 className="text-3xl font-jetbrains-mono text-platinum-white text-center mt-10 tracking-widest">
+				<TypewriterText className="text-3xl font-jetbrains-mono text-platinum-white text-center mt-10 tracking-widest h-7">
 					John Lloyd Unida
-				</h3>
+				</TypewriterText>
 			</div>
 
 			<StickyTimeline />
@@ -121,16 +122,22 @@ export default function Home() {
 					Tech <span className="text-denim-blue">Stack</span>
 				</h2>
 
-				<HorizontalSlide className="mt-10">
-					{languages.map((item) => {
-						return <TechCard key={item.name} item={item} />;
-					})}
-				</HorizontalSlide>
-				<HorizontalSlide className="mt-5" delay={1000}>
-					{frameworks.map((item) => {
-						return <TechCard key={item.name} item={item} />;
-					})}
-				</HorizontalSlide>
+				<div className="flex flex-col relative w-full">
+					<HorizontalSlide className="mt-10">
+						{languages.map((item) => {
+							return <TechCard key={item.name} item={item} />;
+						})}
+					</HorizontalSlide>
+					<HorizontalSlide className="mt-5" delay={1000}>
+						{frameworks.map((item) => {
+							return <TechCard key={item.name} item={item} />;
+						})}
+					</HorizontalSlide>
+					<div className="absolute top-0 left-0 w-full h-full z-10 flex pointer-events-none">
+						<div className="w-full h-full bg-linear-to-r from-obsidian-black to-90%"></div>
+						<div className="w-full h-full bg-linear-to-l from-obsidian-black to-90%"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

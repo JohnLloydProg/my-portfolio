@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +11,7 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
+import { animate, stagger } from "animejs";
 
 interface project {
 	title: string;
@@ -54,6 +55,16 @@ const projects: project[] = [
 export default function ProjectShowcase() {
 	const [selected, setSelected] = useState<project | null>(null);
 
+	useEffect(() => {
+		animate(".stagger-item", {
+			y: [30, 0],
+			opacity: [0, 1],
+			duration: 700,
+			ease: "outExpo",
+			delay: stagger(150),
+		});
+	});
+
 	return (
 		<div className="flex gap-10 mt-15 w-full max-w-6xl h-full">
 			<div className="flex flex-col bg-ocean-navy border border-denim-blue/40 w-70 h-full p-5 items-center rounded-xl">
@@ -90,7 +101,7 @@ export default function ProjectShowcase() {
 				{selected !== null && (
 					<div className="w-full h-full flex flex-col">
 						<div className="flex w-full justify-center">
-							<Carousel className="w-65/100" opts={{ loop: true }}>
+							<Carousel className="w-65/100 stagger-item" opts={{ loop: true }}>
 								<CarouselContent>
 									{selected.imgs.map((image, index) => (
 										<CarouselItem key={image}>
@@ -106,32 +117,34 @@ export default function ProjectShowcase() {
 								</CarouselContent>
 								<CarouselPrevious
 									size="icon-lg"
-									className="rounded-full bg-obsidian-black/80 hover:bg-denim-blue text-platinum-white border-2 border-platinum-white shadow-lg backdrop-blur-sm transition-all"
+									className="rounded-full bg-obsidian-black/80 hover:bg-denim-blue text-platinum-white border-2 border-platinum-white shadow-lg backdrop-blur-sm transition-all hover:scale-110"
 								/>
 								<CarouselNext
 									size="icon-lg"
-									className="rounded-full bg-obsidian-black/80 hover:bg-denim-blue text-platinum-white border-2 border-platinum-white shadow-lg backdrop-blur-sm transition-all"
+									className="rounded-full bg-obsidian-black/80 hover:bg-denim-blue text-platinum-white border-2 border-platinum-white shadow-lg backdrop-blur-sm transition-all hover:scale-110"
 								/>
 							</Carousel>
 						</div>
 						<div className="flex mt-5 items-center gap-10">
-							<h3 className="font-inter font-bold text-2xl text-platinum-white">
+							<h3 className="font-inter font-bold text-2xl text-platinum-white stagger-item">
 								{selected.title}
 							</h3>
 							<div className="flex items-center gap-5">
 								{selected.techs.map((badge) => (
-									<Badge key={badge} className="rounded-full">
+									<Badge key={badge} className="rounded-full stagger-item">
 										{badge}
 									</Badge>
 								))}
 							</div>
 						</div>
 
-						<p className="w-full text-justify mt-3">{selected.description}</p>
+						<p className="w-full text-justify mt-3 stagger-item">
+							{selected.description}
+						</p>
 
 						<Button
 							size="lg"
-							className="mt-5 bg-obsidian-black w-20 text-center px-3 py-1.5 rounded-md border border-denim-blue text-denim-blue hover:bg-obsidian-black hover:font-bold"
+							className="mt-5 stagger-item bg-obsidian-black w-20 text-center px-3 py-1.5 rounded-md border border-denim-blue text-denim-blue hover:bg-obsidian-black hover:font-bold hover:scale-105"
 							onClick={() => window.open(selected.link, "_blank")}
 						>
 							View
