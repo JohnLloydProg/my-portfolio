@@ -108,6 +108,15 @@ export default function StickyTimeline() {
 			progress = Math.max(0, Math.min(1, progress));
 			setScrollProgress(progress);
 
+			if (progress >= 1) {
+				animate(activeLineRef.current, {
+					width: "100%",
+					duration: 800,
+					ease: "outElastic(1, 0.8)",
+				});
+				return;
+			}
+
 			const delta = progress - prevProgressRef.current;
 			prevProgressRef.current = progress;
 
@@ -188,7 +197,7 @@ export default function StickyTimeline() {
 
 					<div
 						ref={activeLineRef}
-						className="absolute top-3 left-0 w-1/2 h-1 bg-denim-blue rounded-full z-10 transition-all duration-75 ease-out"
+						className="absolute top-3 left-0 h-1 bg-denim-blue rounded-full z-10 transition-all duration-75 ease-out"
 					/>
 
 					<div

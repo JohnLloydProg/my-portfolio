@@ -37,7 +37,7 @@ export default function ProjectDashboard({
 		) {
 			onProjectClick(filteredProjects[0]);
 		}
-	}, [activeFilter, filteredProjects, selectedProject]);
+	}, [filteredProjects, selectedProject, onProjectClick]);
 
 	useEffect(() => {
 		const wrapper = wrapperRef.current;
@@ -63,8 +63,6 @@ export default function ProjectDashboard({
 			});
 		};
 
-		// Attach event listener specifically to the wrapper, NOT the window
-		// This ensures normal scrolling still works in the details panel
 		wrapper.addEventListener("wheel", handleWheel, { passive: false });
 
 		return () => {
@@ -86,7 +84,16 @@ export default function ProjectDashboard({
 							<button
 								type="button"
 								key={filter}
-								onClick={() => onFilterClick(filter)}
+								onClick={() => {
+									if (!wrapperRef.current) return;
+									scrollPosition.current = 0;
+									onFilterClick(filter);
+									animate(wrapperRef.current, {
+										y: -scrollPosition.current,
+										duration: 150,
+										ease: "outQuad",
+									});
+								}}
 								className={`w-full text-left border-l-2 px-3 py-2 transition-all text-sm font-medium ${
 									isActive
 										? "border-denim-blue text-platinum-white bg-denim-blue/20"

@@ -74,7 +74,6 @@ export default function Projects() {
 	const handleProjectClick = useCallback((project: Project) => {
 		setSelectedProject(project);
 
-		// Scroll the main content area to the matching section
 		const targetSection = sectionRefs.current[project.id];
 		if (targetSection) {
 			targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -88,7 +87,7 @@ export default function Projects() {
 		) {
 			setSelectedProject(filteredProjects[0]);
 		}
-	}, [activeFilter, filteredProjects, selectedProject]);
+	}, [filteredProjects, selectedProject]);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -107,12 +106,11 @@ export default function Projects() {
 			},
 			{
 				root: null,
-				rootMargin: "-20% 0px -60% 0px", // Triggers when element is in the middle of the viewport
+				rootMargin: "-20% 0px -60% 0px",
 				threshold: 0,
 			},
 		);
 
-		// Observe all project sections currently in the filtered list
 		filteredProjects.forEach((project) => {
 			const el = sectionRefs.current[project.id];
 			if (el) observer.observe(el);
@@ -132,7 +130,7 @@ export default function Projects() {
 				onProjectClick={handleProjectClick}
 			/>
 			<main className="flex-1 h-full overflow-y-auto scroll-smooth py-8 px-12 custom-scrollbar">
-				<div className="max-w-4xl mx-auto flex flex-col gap-32 pb-64">
+				<div className="max-w-4xl mx-auto flex flex-col gap-32">
 					{filteredProjects.map((project) => (
 						<div
 							key={`detail-${project.id}`}
@@ -140,10 +138,8 @@ export default function Projects() {
 							ref={(el) => {
 								sectionRefs.current[project.id] = el;
 							}}
-							className="min-h-[60vh] flex flex-col justify-center scroll-mt-14"
+							className="min-h-[60vh] flex flex-col scroll-mt-14"
 						>
-							{/* --- THIS IS WHERE YOU PUT CUSTOM CONTENT --- */}
-
 							{project.id === "p1" && (
 								<div className="p1-custom-layout">
 									<h1 className="text-5xl font-bold mb-6 text-green-400">
@@ -171,7 +167,6 @@ export default function Projects() {
 								</div>
 							)}
 
-							{/* Fallback for projects that don't have custom TSX yet */}
 							{project.id !== "p1" && project.id !== "p2" && (
 								<div>
 									<span className="text-sm font-semibold text-blue-500 tracking-wider uppercase mb-2">
