@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { milestone } from "../../interfaces/milestone";
 import TimelineDot from "./timelineDot";
 import { animate } from "animejs";
-import Image from "next/image";
+import MilestoneContainer from "./milestoneContainer";
 
 const milestones: milestone[] = [
 	{
@@ -61,6 +61,9 @@ export default function StickyTimeline() {
 
 	const trackRef = useRef<HTMLDivElement>(null);
 	const activeLineRef = useRef<HTMLDivElement>(null);
+	const dotContainer = useRef<HTMLDivElement>(null);
+	const prevProgressRef = useRef(0);
+	const scrollTimeoutRef = useRef<NodeJS.Timeout>(null);
 
 	const scrollCall = (index: number) => {
 		if (!trackRef.current) return;
@@ -86,7 +89,8 @@ export default function StickyTimeline() {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			if (!trackRef.current || !activeLineRef.current) return;
+			if (!trackRef.current || !activeLineRef.current || !dotContainer.current)
+				return;
 
 			const rect = trackRef.current.getBoundingClientRect();
 			const windowHeight = window.innerHeight;
@@ -104,11 +108,35 @@ export default function StickyTimeline() {
 			progress = Math.max(0, Math.min(1, progress));
 			setScrollProgress(progress);
 
+			const delta = progress - prevProgressRef.current;
+			prevProgressRef.current = progress;
+
+			const stretchAmount = 50 + -delta * 800;
+			const clampedStretch = Math.max(20, Math.min(80, stretchAmount));
+
 			animate(activeLineRef.current, {
-				width: `${progress * 100}%`,
+				width: `${clampedStretch}%`,
+				duration: 150,
+				ease: "outQuad",
+			});
+
+			animate(dotContainer.current, {
+				left: `${(1 - progress) * 100}%`,
 				duration: 600,
 				ease: "outExpo",
 			});
+
+			if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+
+			scrollTimeoutRef.current = setTimeout(() => {
+				if (!activeLineRef.current) return;
+
+				animate(activeLineRef.current, {
+					width: "50%",
+					duration: 800,
+					ease: "outElastic(1, 0.8)",
+				});
+			}, 150);
 		};
 
 		window.addEventListener("scroll", handleScroll, { passive: true });
@@ -149,21 +177,24 @@ export default function StickyTimeline() {
 
 	return (
 		<div ref={trackRef} className="relative w-full h-[400vh] bg-[#0B0C10]">
-			<div className="sticky flex flex-col w-full top-24 h-[calc(100lvh-6rem)] items-center">
-				<h2 className="text-5xl font-inter font-bold text-platinum-white">
+			<div className="sticky flex flex-col w-full top-24 h-fit">
+				<h2 className="text-5xl font-inter font-bold text-platinum-white text-center w-full">
 					<span className="text-denim-blue">Career</span> &{" "}
 					<span className="text-denim-blue">Experience</span>
 				</h2>
 
-				<div className="relative w-full max-w-6xl px-4 md:px-8 mt-20">
-					<div className="absolute top-3 left-4 md:left-8 right-4 md:right-8 h-1 bg-ocean-navy rounded-full z-0" />
+				<div className="relative w-full mt-20 overflow-hidden">
+					<div className="absolute top-3 left-0 right-0 h-1 bg-ocean-navy rounded-full z-0" />
 
 					<div
 						ref={activeLineRef}
-						className="absolute top-3 left-4 md:left-8 h-1 bg-denim-blue rounded-full z-10 transition-all duration-75 ease-out"
+						className="absolute top-3 left-0 w-1/2 h-1 bg-denim-blue rounded-full z-10 transition-all duration-75 ease-out"
 					/>
 
-					<div className="relative z-20 flex justify-between w-full">
+					<div
+						ref={dotContainer}
+						className="relative z-20 flex justify-between w-full -translate-x-1/2"
+					>
 						{milestones.map((milestone, index) => {
 							return (
 								<TimelineDot
@@ -183,39 +214,11 @@ export default function StickyTimeline() {
 				<div className="overflow-hidden w-full flex justify-center">
 					<div className="relative w-full max-w-4xl h-87.5 mt-15 flex justify-center items-center  overflow-x-visible">
 						{milestones.map((milestone, index) => (
-							<div
-								id={`milestone-card-${index}`}
+							<MilestoneContainer
 								key={milestone.year}
-								className={`absolute flex flex-col items-center shadow shadow-denim-blue border border-denim-blue/40 backdrop-blur-sm rounded-xl p-6 w-2xl bg-ocean-navy/90 ${index === 0 ? "opacity-100" : "opacity-0"}`}
-								style={{
-									transform:
-										index === 0
-											? "translateX(0%) scale(1)"
-											: "translateX(110%) scale(0.8)",
-								}}
-							>
-								<h3 className="font-inter font-bold text-2xl text-platinum-white text-center">
-									{milestone.position}
-								</h3>
-
-								<p className="font-inter text-center text-denim-blue text-lg">
-									{milestone.company}
-								</p>
-
-								<p className="font-jetbrains-mono text-lg text-platinum-white text-center mt-5">
-									{milestone.description}
-								</p>
-
-								{milestone.logo && (
-									<Image
-										src={milestone.logo}
-										alt={`${milestone.company} logo`}
-										width={70}
-										height={70}
-										className="mt-10"
-									/>
-								)}
-							</div>
+								milestone={milestone}
+								index={index}
+							/>
 						))}
 					</div>
 				</div>
