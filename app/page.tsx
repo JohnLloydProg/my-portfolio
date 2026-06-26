@@ -1,32 +1,32 @@
 import FloatingText from "./components/floatingText";
 import HorizontalSlide, { type tech } from "./components/horizontalSlide";
-import Image from "next/image";
 import ProjectShowcase from "./components/projectShowcase";
 import StickyTimeline from "./components/timeline/timeline";
 import { TechCard } from "./components/techCard";
 import TypewriterText from "./components/typewriterText";
+import ProfileOrbit from "./components/profileOrbit";
 
 // Hello from John Lloyd
 
 const languages: tech[] = [
 	{
 		name: "Python",
-		img: "/python-logo.svg",
+		img: "/icons/python-logo.svg",
 		experience: 3,
 	},
 	{
 		name: "Java",
-		img: "/java-logo.svg",
+		img: "/icons/java-logo.svg",
 		experience: 2,
 	},
 	{
 		name: "Javascript",
-		img: "/javascript-logo.svg",
+		img: "/icons/javascript-logo.svg",
 		experience: 2,
 	},
 	{
 		name: "CSS",
-		img: "/css-logo.svg",
+		img: "/icons/css-logo.svg",
 		experience: 2,
 	},
 ];
@@ -34,22 +34,22 @@ const languages: tech[] = [
 const frameworks: tech[] = [
 	{
 		name: "Django",
-		img: "/django-logo.svg",
+		img: "/icons/django-logo.svg",
 		experience: 3,
 	},
 	{
 		name: "Springbot",
-		img: "/spring-boot-logo.svg",
+		img: "/icons/spring-boot-logo.svg",
 		experience: 3,
 	},
 	{
 		name: "Angular",
-		img: "/angular-logo.svg",
+		img: "/icons/angular-logo.svg",
 		experience: 3,
 	},
 	{
 		name: "React",
-		img: "/react-logo.svg",
+		img: "/icons/react-logo.svg",
 		experience: 3,
 	},
 ];
@@ -58,15 +58,16 @@ export default function Home() {
 	return (
 		<div className="flex flex-col items-center justify-center">
 			<div className="landing flex flex-col h-lvh w-9/10 items-center justify-center bg-radial from-denim-blue/60 to-60% mb-10">
+				<div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-size-[32px_32px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
 				<div className="flex items-center justify-center gap-5">
-					<div className="flex flex-col items-center gap-10">
+					<div className="flex flex-col items-center gap-10 z-20">
 						<FloatingText showText="Innovative">
 							<p className="text-center font-jetbrains-mono">
 								I aim to create innovative solutions that push the boundaries of
 								what's possible.
 							</p>
 						</FloatingText>
-						<h1 className="text-6xl w-full font-inter font-bold text-right">
+						<h1 className="text-7xl w-full font-inter font-bold text-right">
 							Software
 						</h1>
 						<FloatingText showText="Deliver Value">
@@ -76,23 +77,14 @@ export default function Home() {
 							</p>
 						</FloatingText>
 					</div>
-					<div className="min-h-100 min-w-100 relative">
-						<Image
-							src="/profile.jpg"
-							alt="John Lloyd"
-							width={370}
-							height={370}
-							className="rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-						/>
-						<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-100 h-100 bg-transparent border-6 border-denim-blue rounded-full animate-spin-slow border-dashed"></div>
-					</div>
-					<div className="flex flex-col items-center gap-10">
+					<ProfileOrbit />
+					<div className="flex flex-col items-center gap-10 z-20">
 						<FloatingText showText="Team Player">
 							<p className="text-center font-jetbrains-mono">
 								I excel at collaborating with teams to achieve common goals.
 							</p>
 						</FloatingText>
-						<h1 className="text-6xl w-full font-inter font-bold text-left">
+						<h1 className="text-7xl w-full font-inter font-bold text-left">
 							Engineer
 						</h1>
 						<FloatingText showText="Resilient">
@@ -102,14 +94,14 @@ export default function Home() {
 						</FloatingText>
 					</div>
 				</div>
-				<TypewriterText className="text-3xl font-jetbrains-mono text-platinum-white text-center mt-10 tracking-widest h-7">
+				<TypewriterText className="text-3xl font-jetbrains-mono text-platinum-white text-centerd tracking-widest h-7">
 					John Lloyd Unida
 				</TypewriterText>
 			</div>
 
 			<StickyTimeline />
 
-			<div className="projects flex flex-col items-center w-full h-[calc(100lvh-6rem)] mt-10">
+			<div className="projects flex flex-col items-center w-full h-[calc(100lvh-6rem)] max-h-170 gap-10 mt-20">
 				<h2 className="text-5xl font-inter font-bold text-platinum-white">
 					Highlight <span className="text-denim-blue">Projects</span>
 				</h2>
@@ -123,12 +115,12 @@ export default function Home() {
 				</h2>
 
 				<div className="flex flex-col relative w-full">
-					<HorizontalSlide className="mt-10">
+					<HorizontalSlide className="mt-10 h-21">
 						{languages.map((item) => {
 							return <TechCard key={item.name} item={item} />;
 						})}
 					</HorizontalSlide>
-					<HorizontalSlide className="mt-5" delay={1000}>
+					<HorizontalSlide className="mt-5 h-21" reverse>
 						{frameworks.map((item) => {
 							return <TechCard key={item.name} item={item} />;
 						})}

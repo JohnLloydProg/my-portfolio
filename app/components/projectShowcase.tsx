@@ -59,14 +59,14 @@ export default function ProjectShowcase() {
 		animate(".stagger-item", {
 			y: [30, 0],
 			opacity: [0, 1],
-			duration: 700,
+			duration: 600,
 			ease: "outExpo",
 			delay: stagger(150),
 		});
 	});
 
 	return (
-		<div className="flex gap-10 mt-15 w-full max-w-6xl h-full">
+		<div className="flex gap-10 w-full max-w-6xl h-full">
 			<div className="flex flex-col bg-ocean-navy border border-denim-blue/40 w-70 h-full p-5 items-center rounded-xl">
 				<h4 className="font-jetbrains-mono text-platinum-white text-xl text-center">
 					Projects
@@ -88,8 +88,8 @@ export default function ProjectShowcase() {
 			</div>
 			<div className="showCase w-full h-full flex items-center justify-center bg-ocean-navy border border-denim-blue/40 rounded-xl p-5">
 				{selected === null && (
-					<div className="m-auto text-center">
-						<h3 className="font-bold font-jetbrains-mono text-denim-blue text-xl">
+					<div className="text-center">
+						<h3 className="font-bold font-jetbrains-mono text-denim-blue text-xl animate-pulse">
 							No Selected Project
 						</h3>
 						<p className="text-platinum-white font-jetbrains-mono text mt-2">
@@ -99,7 +99,7 @@ export default function ProjectShowcase() {
 				)}
 
 				{selected !== null && (
-					<div className="w-full h-full flex flex-col">
+					<div className="w-full h-fit flex flex-col">
 						<div className="flex w-full justify-center">
 							<Carousel className="w-65/100 stagger-item" opts={{ loop: true }}>
 								<CarouselContent>

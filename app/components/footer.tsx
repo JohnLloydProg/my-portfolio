@@ -15,7 +15,7 @@ export default function Footer() {
 							rel="noreferrer noopener"
 						>
 							<Image
-								src="/facebook-logo.svg"
+								src="/icons/facebook-logo.svg"
 								alt="facebook logo"
 								width={30}
 								height={30}
@@ -27,7 +27,7 @@ export default function Footer() {
 							rel="noreferrer noopener"
 						>
 							<Image
-								src="/instagram-logo.svg"
+								src="/icons/instagram-logo.svg"
 								alt="instagram logo"
 								width={30}
 								height={30}
@@ -39,7 +39,7 @@ export default function Footer() {
 							rel="noreferrer noopener"
 						>
 							<Image
-								src="/linkedin-logo.svg"
+								src="/icons/linkedin-logo.svg"
 								alt="linked logo"
 								width={30}
 								height={30}
@@ -51,7 +51,7 @@ export default function Footer() {
 							rel="noreferrer noopener"
 						>
 							<Image
-								src="/github-logo.svg"
+								src="/icons/github-logo.svg"
 								alt="github logo"
 								width={30}
 								height={30}

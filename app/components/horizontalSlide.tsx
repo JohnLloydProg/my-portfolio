@@ -53,7 +53,11 @@ export default function HorizontalSlide({
 					pauseOnHover ? animationRef.current?.pause() : "";
 				}}
 				onMouseLeave={() => {
-					pauseOnHover ? animationRef.current?.play() : "";
+					!pauseOnHover
+						? ""
+						: reverse
+							? animationRef.current?.reverse()
+							: animationRef.current?.play();
 				}}
 			>
 				<div className="item-container h-full flex gap-10 pr-10 items-center">

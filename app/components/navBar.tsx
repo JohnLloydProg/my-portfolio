@@ -12,7 +12,7 @@ export default function NavBar() {
 	}, [currentPath]);
 
 	return (
-		<header className="flex z-10 h-14 w-full items-center justify-between p-5 sticky top-0 left-0">
+		<header className="flex z-50 h-14 w-full items-center justify-between p-5 sticky top-0 left-0">
 			<Link
 				href="/"
 				className="h-10 w-10 rounded-full bg-denim-blue flex items-center justify-center"

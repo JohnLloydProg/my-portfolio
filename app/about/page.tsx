@@ -9,23 +9,23 @@ interface hobby {
 const hobbies: hobby[] = [
 	{
 		name: "Badminton",
-		img: "/angular-logo.svg",
+		img: "/icons/angular-logo.svg",
 	},
 	{
 		name: "Gym",
-		img: "/angular-logo.svg",
+		img: "/icons/angular-logo.svg",
 	},
 	{
 		name: "Anime",
-		img: "/angular-logo.svg",
+		img: "/icons/angular-logo.svg",
 	},
 	{
 		name: "Games",
-		img: "/angular-logo.svg",
+		img: "/icons/angular-logo.svg",
 	},
 	{
 		name: "Basketball",
-		img: "/angular-logo.svg",
+		img: "/icons/angular-logo.svg",
 	},
 ];
 
@@ -178,12 +178,12 @@ export default function About() {
 				</h2>
 
 				<div className="relative w-full">
-					<HorizontalSlide pauseOnHover={false} className="mt-10">
+					<HorizontalSlide pauseOnHover={false} className="mt-10 py-1">
 						{hobbies.map((hobby) => {
 							return (
 								<div
 									key={hobby.name}
-									className="bg-ocean-navy flex flex-col items-center w-60 px-3 py-5 rounded-lg border border-denim-blue/40 shadow-xs shadow-denim-blue"
+									className="bg-ocean-navy flex flex-col items-center w-60 px-3 py-5 border-b-3 border-denim-blue"
 								>
 									<div className="relative w-full aspect-3/4">
 										<Image

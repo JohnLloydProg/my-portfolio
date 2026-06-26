@@ -49,14 +49,14 @@ export default function FloatingText({
 
 	return (
 		<button
-			className={`cursor-pointer transition-colors duration-300 border block w-100 h-fit relative p-3 rounded ${isVisible ? "bg-ocean-navy/90 border-denim-blue/40 backdrop-blur-sm" : "bg-transparent border-transparent"}`}
+			className={`group cursor-pointer transition-colors duration-300 border block w-100 h-fit relative p-3 rounded ${isVisible ? "bg-ocean-navy/90 border-denim-blue/40 backdrop-blur-sm" : "bg-transparent border-transparent"}`}
 			onClick={() => setIsVisible(true)}
 			onMouseLeave={() => setIsVisible(false)}
 			type="button"
 		>
 			<h3
 				ref={textRef}
-				className={`showText text-3xl transition-colors duration-300 font-jetbrains-mono font-bold text-center ${isVisible ? "text-denim-blue" : "text-denim-blue/80 hover:text-denim-blue"}`}
+				className={`showText text-3xl transition-colors duration-300 font-jetbrains-mono font-bold text-center text-denim-blue group-hover:scale-105`}
 			>
 				{showText}
 			</h3>
