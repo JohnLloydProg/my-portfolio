@@ -1,7 +1,4 @@
-"use client";
-
-import { useCallback, useEffect, useRef, useState } from "react";
-import ProjectDashboard from "./sideBar";
+import ProjectCard from "./projectCard";
 
 // --- INTERFACES ---
 export interface Project {
@@ -20,7 +17,7 @@ const FILTERS: string[] = [
 	"React Native",
 ];
 
-const PROJECTS_DATA: Project[] = [
+export const PROJECTS_DATA: Project[] = [
 	{
 		id: "p1",
 		name: "E-Commerce Dashboard",
@@ -59,131 +56,17 @@ const PROJECTS_DATA: Project[] = [
 	},
 ];
 
-export default function Projects() {
-	const [activeFilter, setActiveFilter] = useState<string>("All");
-	const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-	const [selectedProject, setSelectedProject] = useState<Project>(
-		PROJECTS_DATA[0],
-	);
-
-	const filteredProjects =
-		activeFilter === "All"
-			? PROJECTS_DATA
-			: PROJECTS_DATA.filter((project) => project.framework === activeFilter);
-
-	const handleProjectClick = useCallback((project: Project) => {
-		setSelectedProject(project);
-
-		const targetSection = sectionRefs.current[project.id];
-		if (targetSection) {
-			targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
-		}
-	}, []);
-
-	useEffect(() => {
-		if (
-			!filteredProjects.includes(selectedProject) &&
-			filteredProjects.length > 0
-		) {
-			setSelectedProject(filteredProjects[0]);
-		}
-	}, [filteredProjects, selectedProject]);
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						const visibleProjectId = entry.target.id;
-						const project = PROJECTS_DATA.find(
-							(p) => p.id === visibleProjectId,
-						);
-						if (project) {
-							setSelectedProject(project);
-						}
-					}
-				});
-			},
-			{
-				root: null,
-				rootMargin: "-20% 0px -60% 0px",
-				threshold: 0,
-			},
-		);
-
-		filteredProjects.forEach((project) => {
-			const el = sectionRefs.current[project.id];
-			if (el) observer.observe(el);
-		});
-
-		return () => observer.disconnect();
-	}, [filteredProjects]);
-
+export default async function Projects() {
 	return (
-		<div className="flex">
-			<ProjectDashboard
-				projects={PROJECTS_DATA}
-				allFilters={FILTERS}
-				activeFilter={activeFilter}
-				selectedProject={selectedProject}
-				onFilterClick={setActiveFilter}
-				onProjectClick={handleProjectClick}
-			/>
-			<main className="flex-1 h-full overflow-y-auto scroll-smooth py-8 px-12 custom-scrollbar">
-				<div className="max-w-4xl mx-auto flex flex-col gap-32">
-					{filteredProjects.map((project) => (
-						<div
-							key={`detail-${project.id}`}
-							id={project.id}
-							ref={(el) => {
-								sectionRefs.current[project.id] = el;
-							}}
-							className="min-h-[60vh] flex flex-col scroll-mt-14"
-						>
-							{project.id === "p1" && (
-								<div className="p1-custom-layout">
-									<h1 className="text-5xl font-bold mb-6 text-green-400">
-										Custom Title for P1!
-									</h1>
-									<p>{project.description}</p>
-									<div className="grid grid-cols-2 gap-4 mt-8">
-										<div className="h-40 bg-slate-800 rounded-xl">Graph 1</div>
-										<div className="h-40 bg-slate-800 rounded-xl">Graph 2</div>
-									</div>
-								</div>
-							)}
-
-							{project.id === "p2" && (
-								<div className="p2-custom-layout">
-									<h1 className="text-5xl font-bold mb-6 text-purple-500">
-										Anime Tracker Setup
-									</h1>
-									<p className="italic text-gray-400">
-										A completely different layout.
-									</p>
-									<div className="h-96 bg-slate-800 mt-8 rounded-full flex items-center justify-center">
-										Custom Round Graphic
-									</div>
-								</div>
-							)}
-
-							{project.id !== "p1" && project.id !== "p2" && (
-								<div>
-									<span className="text-sm font-semibold text-blue-500 tracking-wider uppercase mb-2">
-										{project.framework}
-									</span>
-									<h1 className="text-5xl font-bold text-white mb-6">
-										{project.name}
-									</h1>
-									<p className="text-xl text-gray-400 leading-relaxed mb-8">
-										{project.description}
-									</p>
-								</div>
-							)}
-						</div>
-					))}
-				</div>
-			</main>
+		<div className="flex flex-col items-center min-h-lvh">
+			<h1 className="font-inter text-5xl font-bold mt-10">
+				Explore My Projects
+			</h1>
+			<div className="flex flex-wrap gap-10 max-w-6xl justify-center mt-20">
+				{PROJECTS_DATA.map((project) => (
+					<ProjectCard key={project.id} project={project} />
+				))}
+			</div>
 		</div>
 	);
 }
