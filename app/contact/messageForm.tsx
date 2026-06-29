@@ -2,37 +2,7 @@
 
 import { useActionState, useEffect } from "react";
 import { useFormStatus } from "react-dom";
-
-interface FormState {
-	success: boolean | null;
-	message: string;
-	error: string;
-}
-
-async function submitMessage(
-	previousState: FormState,
-	formData: FormData,
-): Promise<FormState> {
-	const firstName = formData.get("firstName");
-	const lastName = formData.get("lastName");
-	const email = formData.get("email");
-	const message = formData.get("message");
-
-	if (!email || !message)
-		return {
-			success: false,
-			message: "",
-			error: "Email and message is required!",
-		};
-
-	await new Promise((resolve) => setTimeout(resolve, 1600));
-
-	return {
-		success: true,
-		message: "The message has finished sending",
-		error: "",
-	};
-}
+import { submitMessage } from "./submitMessage";
 
 function SubmitButton() {
 	const { pending } = useFormStatus();
