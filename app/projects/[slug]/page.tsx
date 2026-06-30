@@ -9,6 +9,7 @@ import {
 	CarouselPrevious,
 } from "@/components/ui/carousel";
 import type { Project } from "../page";
+import { notFound } from "next/navigation";
 
 export default async function ProjectPage({
 	params,
@@ -21,7 +22,7 @@ export default async function ProjectPage({
 	const fileContent = await fs.readFile(filePath, "utf8");
 	const data: Project[] = JSON.parse(fileContent);
 	const project = data.find((project) => project.id === slug);
-	if (!project) return <h1>Not found!</h1>;
+	if (!project) return notFound();
 
 	try {
 		const projectImagesPath = path.join(

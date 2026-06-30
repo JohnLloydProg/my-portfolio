@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "John Lloyd Unida",
+	title: "John Lloyd",
 	description: "Portfolio Website of John Lloyd",
 };
 

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import FloatingText from "./components/floatingText";
 import HorizontalSlide, { type tech } from "./components/horizontalSlide";
 import ProfileOrbit from "./components/profileOrbit";
@@ -53,6 +54,27 @@ const frameworks: tech[] = [
 		experience: 3,
 	},
 ];
+
+export const metadata: Metadata = {
+	title: "John Lloyd | Home",
+	description:
+		"John Lloyd's introduction as a developer. Contains careers, projects, and tech stacks.",
+	keywords: [
+		"web development",
+		"portfolio",
+		"Next.js",
+		"projects",
+		"app development",
+	],
+
+	openGraph: {
+		title: "Meet John Lloyd!",
+		description:
+			"John Lloyd's introduction as a developer. Contains careers, projects, and tech stacks.",
+		siteName: "John Lloyd | Home",
+		type: "website",
+	},
+};
 
 export default function Home() {
 	return (
