@@ -1,6 +1,6 @@
+import { promises as fs } from "fs";
 import path from "path";
 import ProjectCard from "./projectCard";
-import { promises as fs } from "fs";
 
 // --- INTERFACES ---
 export interface Project {

@@ -1,10 +1,10 @@
 "use client";
 
+import { animate } from "animejs";
 import { useEffect, useRef, useState } from "react";
 import type { milestone } from "../../interfaces/milestone";
-import TimelineDot from "./timelineDot";
-import { animate } from "animejs";
 import MilestoneContainer from "./milestoneContainer";
+import TimelineDot from "./timelineDot";
 
 const milestones: milestone[] = [
 	{

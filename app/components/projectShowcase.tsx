@@ -1,5 +1,6 @@
 "use client";
 
+import { animate, stagger } from "animejs";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
@@ -11,7 +12,6 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
-import { animate, stagger } from "animejs";
 
 interface project {
 	title: string;

@@ -1,4 +1,4 @@
-import { useEffect, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction, useEffect } from "react";
 import type { milestone } from "../../interfaces/milestone";
 
 export default function TimelineDot({

@@ -1,10 +1,10 @@
 import FloatingText from "./components/floatingText";
 import HorizontalSlide, { type tech } from "./components/horizontalSlide";
-import ProjectShowcase from "./components/projectShowcase";
-import StickyTimeline from "./components/timeline/timeline";
-import { TechCard } from "./components/techCard";
-import TypewriterText from "./components/typewriterText";
 import ProfileOrbit from "./components/profileOrbit";
+import ProjectShowcase from "./components/projectShowcase";
+import { TechCard } from "./components/techCard";
+import StickyTimeline from "./components/timeline/timeline";
+import TypewriterText from "./components/typewriterText";
 
 // Hello from John Lloyd
 

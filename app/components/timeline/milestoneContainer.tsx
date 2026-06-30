@@ -1,5 +1,5 @@
-import type { milestone } from "@/app/interfaces/milestone";
 import Image from "next/image";
+import type { milestone } from "@/app/interfaces/milestone";
 
 export default function MilestoneContainer({
 	milestone,
