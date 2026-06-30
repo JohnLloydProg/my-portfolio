@@ -19,7 +19,7 @@ function SubmitButton() {
 }
 
 export default function MessageForm() {
-	const [state, formAction, isPending] = useActionState(submitMessage, {
+	const [state, formAction] = useActionState(submitMessage, {
 		success: null,
 		message: "",
 		error: "",
@@ -38,12 +38,12 @@ export default function MessageForm() {
 			className="bg-ocean-navy border border-denim-blue px-3 py-5 w-8/10 rounded-xl"
 		>
 			{state.error && (
-				<p className="mb-3 h-15 flex items-center justify-center text-red-500 text-lg text-center bg-red-500/30">
+				<p className="mb-3 py-3 flex items-center justify-center text-red-500 text-lg text-center bg-red-500/30">
 					{state.error}
 				</p>
 			)}
 			{state.message && (
-				<p className="mb-3 h-15 flex items-center justify-center text-green-500 text-lg text-center bg-green-500/30">
+				<p className="mb-3 py-3 flex items-center justify-center text-green-500 text-lg text-center bg-green-500/30">
 					{state.message}
 				</p>
 			)}

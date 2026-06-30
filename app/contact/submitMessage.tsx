@@ -12,10 +12,9 @@ interface FormState {
 const resend = new Resend(process.env.RESEND_API);
 
 export async function submitMessage(
-	previousState: FormState,
+	_previousState: FormState,
 	formData: FormData,
 ): Promise<FormState> {
-	"";
 	const firstName = formData.get("firstName");
 	const lastName = formData.get("lastName");
 	const email = formData.get("email");
@@ -28,7 +27,7 @@ export async function submitMessage(
 		};
 
 	try {
-		const { data, error } = await resend.emails.send({
+		const { error } = await resend.emails.send({
 			from: "onboarding@resend.dev",
 			to: ["johnlloydunida0@gmail.com"],
 			subject: `Portfolio Website Message ${new Date().toDateString()}`,
@@ -43,7 +42,7 @@ export async function submitMessage(
 			return { success: false, error: error.message };
 		}
 	} catch (error) {
-		return { success: false, error: "Unknown error occured!" };
+		return { success: false, error: `Unknown error occured: ${error}` };
 	}
 
 	return {
