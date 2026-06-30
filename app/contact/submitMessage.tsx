@@ -1,13 +1,8 @@
 "use server";
 
 import { Resend } from "resend";
+import type { FormState } from "../interfaces/formState";
 import { EmailTemplate } from "./emailTemplate";
-
-interface FormState {
-	success: boolean | null;
-	message?: string;
-	error?: string;
-}
 
 const resend = new Resend(process.env.RESEND_API);
 
