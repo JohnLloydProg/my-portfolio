@@ -18,6 +18,33 @@ function SubmitButton() {
 	);
 }
 
+function FloatingLabel({
+	name,
+	placeholder,
+}: {
+	name: string;
+	placeholder: string;
+}) {
+	return (
+		<div className="relative w-full h-fit mt-7">
+			<input
+				type={name}
+				name={name}
+				className="peer block border-b bg-obsidian-black/50 px-2 py-1 border-denim-blue/70 w-full active:border-denim-blue focus:outline-none focus:border-b-3"
+				placeholder=""
+			/>
+			<label
+				htmlFor={name}
+				className="pointer-events-none absolute top-0 -translate-y-7 left-2 z-10 text-slate-400 transition-all 
+				duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-7 
+				peer-focus:font-bold peer-focus:text-platinum-white uppercase"
+			>
+				{placeholder}
+			</label>
+		</div>
+	);
+}
+
 export default function MessageForm() {
 	const [state, formAction] = useActionState(submitMessage, {
 		success: null,
@@ -47,45 +74,11 @@ export default function MessageForm() {
 					{state.message}
 				</p>
 			)}
-			<div className="flex w-full gap-5">
-				<div className="group">
-					<label
-						htmlFor="firstName"
-						className="block font-inter font-bold mb-1 ml-1"
-					>
-						First Name
-					</label>
-					<input
-						type="firstName"
-						name="firstName"
-						className="border-b bg-obsidian-black/50 px-2 py-1 border-denim-blue/70 w-full active:border-denim-blue focus:outline-none focus:border-b-3"
-					/>
-				</div>
-				<div className="group">
-					<label
-						htmlFor="lastName"
-						className="block font-inter font-bold mb-1 ml-1"
-					>
-						Last Name
-					</label>
-					<input
-						type="lastName"
-						name="lastName"
-						className="border-b bg-obsidian-black/50 px-2 py-1 border-denim-blue/70 w-full active:border-denim-blue focus:outline-none focus:border-b-3"
-					/>
-				</div>
+			<div className="flex w-full gap-5 mb-10">
+				<FloatingLabel name="firstName" placeholder="First Name" />
+				<FloatingLabel name="lastName" placeholder="Last Name" />
 			</div>
-			<label
-				htmlFor="email"
-				className="block font-inter font-bold mb-1 ml-1 mt-5"
-			>
-				Email
-			</label>
-			<input
-				type="email"
-				name="email"
-				className="border-b bg-obsidian-black/50 px-2 py-1 border-denim-blue/70 w-full active:border-denim-blue focus:outline-none focus:border-b-3"
-			/>
+			<FloatingLabel name="email" placeholder="Email" />
 			<textarea
 				name="message"
 				id="message"
