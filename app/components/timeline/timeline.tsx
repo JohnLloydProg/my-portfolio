@@ -16,7 +16,7 @@ const milestones: milestone[] = [
 			"Started the programming journey and foundational computer science studies. Explored Python and created simple programs.",
 	},
 	{
-		year: "2021",
+		year: "2020",
 		position: "Freelance Game Developer",
 		company: "Fiverr",
 		logo: "/icons/fiverr-logo.svg",

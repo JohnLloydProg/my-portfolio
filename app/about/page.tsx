@@ -1,5 +1,6 @@
 import Image from "next/image";
 import HorizontalSlide from "../components/horizontalSlide";
+import CollapsibleContainer from "./collapsibleContainer";
 
 interface hobby {
 	name: string;
@@ -9,23 +10,27 @@ interface hobby {
 const hobbies: hobby[] = [
 	{
 		name: "Badminton",
-		img: "/icons/angular-logo.svg",
+		img: "/hobbies/badminton.jpg",
 	},
 	{
 		name: "Gym",
-		img: "/icons/angular-logo.svg",
+		img: "/hobbies/gym.jpg",
 	},
 	{
 		name: "Anime",
-		img: "/icons/angular-logo.svg",
+		img: "/hobbies/anime.jpg",
 	},
 	{
 		name: "Games",
-		img: "/icons/angular-logo.svg",
+		img: "/hobbies/games.jpg",
 	},
 	{
 		name: "Basketball",
-		img: "/icons/angular-logo.svg",
+		img: "/hobbies/basketball.jpg",
+	},
+	{
+		name: "Cafe",
+		img: "/hobbies/cafe.jpg",
 	},
 ];
 
@@ -116,39 +121,7 @@ export default function About() {
 						</p>
 					</div>
 				</div>
-				<div className="w-full max-w-4xl bg-ocean-navy border border-denim-blue/40 shadow-xs rounded-xl p-4 shadow-denim-blue mt-10">
-					<div className="text-center mb-10">
-						<h2 className="text-3xl font-semibold tracking-tight font-inter mb-2">
-							Scholarship Leadership Camp
-						</h2>
-						<p className="text-denim-blue text-xl font-bold tracking-widest">
-							DOST-SEI
-						</p>
-					</div>
-
-					<div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-						<div className="w-full lg:w-1/2 flex flex-col space-y-8 text-gray-300 text-center leading-relaxed">
-							<p>
-								I was one of the luck ones to attend the Scholarship Leadership
-								Camp by DOST-SEI. There we recalled and practiced the skills,
-								behavior, and mindset a leader should have.
-							</p>
-							<p>
-								Another purpose of the camp was to remind us the important role
-								we have as future professionals in our industries.
-							</p>
-						</div>
-
-						<div className="w-full lg:w-1/2 aspect-video flex justify-center relative">
-							<Image
-								src="/next.svg"
-								fill
-								alt="DOST-SEI Scholars Leadership Camp Group Photo"
-								className="object-contain rounded-xl"
-							/>
-						</div>
-					</div>
-				</div>
+				<CollapsibleContainer />
 
 				<div className="flex flex-col-reverse lg:flex-row w-full mt-10 gap-10">
 					<div className="flex flex-col text-center lg:text-right w-full gap-5 my-auto">
@@ -173,6 +146,58 @@ export default function About() {
 						<p className="text-denim-blue text-xl">JAC R&D</p>
 					</div>
 				</div>
+
+				<div className="flex flex-col lg:flex-row w-full mt-10 gap-10">
+					<div className="flex flex-col text-center lg:text-right w-full my-auto">
+						<p>01/10/22 - Now</p>
+						<h3 className="w-full font-inter font-bold text-3xl">
+							Freelance Software Developer
+						</h3>
+						<p className="text-denim-blue text-xl">Upwork</p>
+					</div>
+					<div className="w-1 bg-denim-blue hidden lg:block" />
+					<div className="h-1 bg-denim-blue w-2/3 mx-auto lg:hidden" />
+					<div className="flex flex-col text-center lg:text-left w-full gap-5 my-auto">
+						<p>
+							I worked as a freelance software developer on various projects for
+							different clients. I initially started to take commissions to see
+							where I stand as a software developer and to gain experience in
+							the field.
+						</p>
+						<p>
+							Here I learned how to be proactive and flexible in my work. I also
+							learned how to communicate effectively with clients and manage my
+							time in both school and work.
+						</p>
+					</div>
+				</div>
+
+				<div className="flex flex-col-reverse lg:flex-row w-full mt-10 gap-10">
+					<div className="flex flex-col text-center lg:text-right w-full gap-5 my-auto">
+						<p>
+							During this time, I feel that I know a lot about programming and
+							game development. So I wanted to try my skills and knowledge in a
+							real world project. I took a commission from a client to develop a
+							game for them.
+						</p>
+						<p>
+							During this time, I expanded my horizon to how big the IT industry
+							is. I also learned how to be resilient and persistent in my work.{" "}
+							<span className="font-bold">
+								Fun Fact: I got banned at Fiverr due to working underage.
+							</span>
+						</p>
+					</div>
+					<div className="w-1 bg-denim-blue hidden lg:block" />
+					<div className="h-1 bg-denim-blue w-2/3 mx-auto lg:hidden" />
+					<div className="flex flex-col text-center lg:text-left w-full my-auto">
+						<p>06/01/20 - 09/20/21</p>
+						<h3 className="w-full font-inter font-bold text-3xl">
+							Freelance Game Developer
+						</h3>
+						<p className="text-denim-blue text-xl">Fiverr</p>
+					</div>
+				</div>
 			</div>
 			<div className="hobbies flex flex-col my-20 w-full overflow-hidden">
 				<h2 className="text-5xl font-inter font-bold text-platinum-white text-center">
@@ -185,17 +210,19 @@ export default function About() {
 							return (
 								<div
 									key={hobby.name}
-									className="bg-ocean-navy flex flex-col items-center w-60 px-3 py-5 border-b-3 border-denim-blue"
+									className="bg-ocean-navy flex flex-col items-center w-60 px-3 py-4 border-b-3 border-denim-blue"
 								>
-									<div className="relative w-full aspect-3/4">
+									<div className="relative w-full aspect-3/4 rounded-xl overflow-clip">
 										<Image
 											src={hobby.img}
 											alt={hobby.name}
 											fill
-											className="object-contain"
+											className="object-contain w-full"
 										/>
 									</div>
-									<h3 className="font-inter text-lg font-bold">{hobby.name}</h3>
+									<h3 className="font-inter text-2xl font-bold mt-5">
+										{hobby.name}
+									</h3>
 								</div>
 							);
 						})}
