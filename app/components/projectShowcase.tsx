@@ -2,6 +2,7 @@
 
 import { animate, stagger } from "animejs";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -47,6 +48,12 @@ export default function ProjectShowcase({ projects }: { projects: Project[] }) {
 						);
 					})}
 				</ul>
+				<Link
+					href="/projects"
+					className="w-full font-inter font-bold bg-denim-blue rounded-full py-2 text-center mt-5 hover:bg-denim-blue/70 hover:scale-105 transition-all"
+				>
+					See More →
+				</Link>
 			</div>
 			<div className="showCase w-full h-fit flex items-center justify-center bg-ocean-navy border border-denim-blue/40 rounded-xl p-5">
 				<div className="w-full h-fit flex flex-col">

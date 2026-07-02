@@ -7,7 +7,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 		<Link
 			href={`/projects/${project.id}`}
 			key={project.id}
-			className="cursor-pointer w-70 group border bg-ocean-navy rounded-xs overflow-hidden border-transparent hover:border-denim-blue hover:scale-110 transition-all"
+			className="cursor-pointer w-70 group border bg-ocean-navy rounded-xs overflow-hidden border-platinum-white/20 hover:border-denim-blue hover:scale-110 transition-all"
 		>
 			<p className="ml-2 my-1 group-hover:text-denim-blue text-platinum-white">
 				{project.name}

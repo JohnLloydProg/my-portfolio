@@ -51,11 +51,12 @@ export default async function Projects({
 
 	return (
 		<div className="flex flex-col items-center min-h-lvh h-fit">
-			<h1 className="font-inter text-5xl font-bold mt-10 text-center">
+			<div className="absolute z-0 inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-size-[32px_32px]" />
+			<h1 className="font-inter z-1 text-5xl font-bold mt-10 text-center">
 				Explore <span className="text-pastel-blue">My</span>{" "}
 				<span className="text-denim-blue">Projects</span>
 			</h1>
-			<div className="flex flex-wrap gap-5 mt-10 w-full max-w-4xl justify-center">
+			<div className="flex flex-wrap z-1 gap-5 mt-10 w-full max-w-4xl justify-center">
 				{[...filters].map((filterOption) => (
 					<Link
 						key={filterOption}
@@ -66,7 +67,7 @@ export default async function Projects({
 					</Link>
 				))}
 			</div>
-			<div className="flex flex-wrap gap-10 max-w-6xl justify-center mt-10 mb-10">
+			<div className="flex flex-wrap z-1 gap-10 max-w-6xl justify-center mt-10 mb-10">
 				{projects.map((project) => (
 					<ProjectCard key={project.id} project={project} />
 				))}

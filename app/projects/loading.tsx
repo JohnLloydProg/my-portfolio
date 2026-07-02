@@ -2,12 +2,13 @@ export default function Loading() {
 	const containerArray = Array.from({ length: 6 }, (_, i) => i);
 	return (
 		<div className="flex flex-col items-center min-h-lvh">
-			<h1 className="font-inter text-5xl font-bold mt-10">
+			<div className="absolute z-0 inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-size-[32px_32px]" />
+			<h1 className="font-inter z-1 text-5xl font-bold mt-10">
 				Explore <span className="text-pastel-blue">My</span>{" "}
 				<span className="text-denim-blue">Projects</span>
 			</h1>
 
-			<div className="flex flex-wrap gap-5 mt-10 w-full max-w-4xl justify-center">
+			<div className="z-1 flex flex-wrap gap-5 mt-10 w-full max-w-4xl justify-center">
 				{containerArray.map((num) => (
 					<div
 						key={num}
@@ -16,7 +17,7 @@ export default function Loading() {
 				))}
 			</div>
 
-			<div className="flex flex-wrap gap-10 max-w-6xl justify-center mt-10 mb-10">
+			<div className="z-1 flex flex-wrap gap-10 max-w-6xl justify-center mt-10 mb-10">
 				{containerArray.map((num) => {
 					return (
 						<div
