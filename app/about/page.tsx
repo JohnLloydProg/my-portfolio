@@ -37,7 +37,7 @@ const hobbies: hobby[] = [
 export default function About() {
 	return (
 		<div className="flex flex-col items-center justify-center">
-			<div className="flex flex-col lg:flex-row items-center gap-5 w-full bg-radial from-denim-blue/60 to-60% max-w-6xl h-fit min-h-lvh">
+			<div className="flex flex-col lg:flex-row items-center gap-5 w-full bg-radial from-denim-blue/60 to-60% max-w-6xl h-fit min-h-lvh lg:mt-0 mt-10">
 				<div className="flex flex-col gap-6 text-center md:text-right w-full">
 					<div>
 						<h1 className="text-inter text-4xl md:text-5xl font-bold tracking-tight text-platinum-white">
@@ -63,7 +63,7 @@ export default function About() {
 					/>
 					<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-transparent border-6 border-denim-blue rounded-full animate-spin-slow border-dashed"></div>
 				</div>
-				<div className="flex flex-col space-y-6 text-center lg:text-left w-full">
+				<div className="flex flex-col space-y-6 text-center lg:text-left w-full lg:px-0 px-2">
 					<p className="text-lg">Glad to see you here!</p>
 					<p className="leading-relaxed">
 						I'm an aspiring software engineer looking to develop all types of
@@ -95,7 +95,7 @@ export default function About() {
 			</div>
 			<div
 				id="story"
-				className="events flex flex-col w-full max-w-6xl items-center"
+				className="events flex flex-col w-full max-w-6xl items-center lg:px-0 px-2"
 			>
 				<h2 className="text-5xl font-inter font-bold text-platinum-white text-center">
 					<span className="text-denim-blue">Events</span> &{" "}

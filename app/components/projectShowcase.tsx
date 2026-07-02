@@ -30,7 +30,7 @@ export default function ProjectShowcase({ projects }: { projects: Project[] }) {
 
 	return (
 		<div className="flex flex-col lg:flex-row gap-10 w-full max-w-6xl h-fit">
-			<div className="flex flex-col bg-ocean-navy border border-denim-blue/40 w-full lg:w-70 h-full p-5 items-center rounded-xl">
+			<div className="flex flex-col bg-ocean-navy border border-denim-blue/40 w-full lg:w-70 h-full p-5 items-center lg:rounded-xl">
 				<h4 className="font-jetbrains-mono text-platinum-white text-xl text-center">
 					Projects
 				</h4>
@@ -55,7 +55,7 @@ export default function ProjectShowcase({ projects }: { projects: Project[] }) {
 					See More →
 				</Link>
 			</div>
-			<div className="showCase w-full h-fit flex items-center justify-center bg-ocean-navy border border-denim-blue/40 rounded-xl p-5">
+			<div className="showCase w-full h-fit flex items-center justify-center bg-ocean-navy border border-denim-blue/40 lg:rounded-xl p-5">
 				<div className="w-full h-fit flex flex-col">
 					{selected.imgs && (
 						<div className="flex w-full justify-center">

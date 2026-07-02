@@ -34,7 +34,7 @@ export default function CommentForm({
 	return (
 		<form
 			action={formAction}
-			className="flex flex-col bg-ocean-navy p-5 w-full max-w-4xl mx-auto rounded-xl mt-10"
+			className="flex flex-col bg-ocean-navy p-5 w-full max-w-4xl mx-auto lg:rounded-xl mt-10"
 		>
 			<h3 className="text-4xl font-bold font-inter text-center lg:text-left">
 				Give me a feedback!

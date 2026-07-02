@@ -106,7 +106,7 @@ export default async function Home() {
 
 	return (
 		<div className="flex flex-col items-center justify-center">
-			<div className="landing flex flex-col h-lvh w-9/10 items-center justify-center bg-radial from-denim-blue/60 to-60% mb-10">
+			<div className="landing flex flex-col h-lvh w-9/10 items-center justify-center bg-radial from-denim-blue/60 to-60% mb-10 overflow-hidden">
 				<div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-size-[32px_32px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
 				<div className="flex flex-col lg:flex-row items-center justify-center gap-5">
 					<div className="flex flex-col items-center gap-10 z-20">

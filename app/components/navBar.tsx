@@ -26,7 +26,7 @@ function SmallNavBar() {
 		<header className="fixed flex z-50 h-14 w-full p-5 top-0 left-0">
 			<button
 				type="button"
-				className="bg-denim-blue rounded-full p-1 w-9 h-9 hover:bg-denim-blue/80 transition-all"
+				className="ml-auto mr-0 bg-denim-blue rounded-full p-1 w-9 h-9 hover:bg-denim-blue/80 transition-all"
 				onClick={() => setShowMenu(!showMenu)}
 			>
 				<Image

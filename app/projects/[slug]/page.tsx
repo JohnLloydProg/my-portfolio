@@ -64,7 +64,7 @@ export default async function ProjectPage({
 	return (
 		<div className="flex justify-center">
 			<div className="absolute z-0 inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-size-[32px_32px]" />
-			<div className="min-h-lvh z-1 flex flex-col w-full max-w-6xl mt-10 mb-10">
+			<div className="min-h-lvh z-1 flex flex-col w-full max-w-6xl mt-20 lg:mt-10 mb-10">
 				{project.imgs && (
 					<Carousel className="w-7/10 mx-auto" opts={{ loop: true }}>
 						<CarouselContent>
@@ -89,7 +89,7 @@ export default async function ProjectPage({
 				<p className="font-semibold text-denim-blue tracking-wider uppercase mb-2 mt-10 text-center lg:text-left">
 					{project.frameworks.join(" | ")}
 				</p>
-				<div className="flex flex-col lg:flex-row justify-between items-center mb-6">
+				<div className="flex flex-col lg:flex-row justify-between items-center mb-6 lg:px-0 px-2">
 					<h1 className="text-5xl lg:text-7xl font-bold font-inter text-center lg:text-left">
 						{project.name}
 					</h1>
@@ -102,7 +102,7 @@ export default async function ProjectPage({
 						View
 					</a>
 				</div>
-				<p className="text-lg leading-relaxed text-center lg:text-left">
+				<p className="text-lg leading-relaxed text-center lg:text-left lg:px-0 px-2">
 					{project.description}
 				</p>
 

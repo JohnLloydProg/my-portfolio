@@ -3,7 +3,7 @@ export default function Loading() {
 	return (
 		<div className="flex flex-col items-center min-h-lvh">
 			<div className="absolute z-0 inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-size-[32px_32px]" />
-			<h1 className="font-inter z-1 text-5xl font-bold mt-10">
+			<h1 className="font-inter z-1 text-5xl font-bold mt-10 text-center">
 				Explore <span className="text-pastel-blue">My</span>{" "}
 				<span className="text-denim-blue">Projects</span>
 			</h1>
