@@ -81,7 +81,7 @@ export default function Home() {
 		<div className="flex flex-col items-center justify-center">
 			<div className="landing flex flex-col h-lvh w-9/10 items-center justify-center bg-radial from-denim-blue/60 to-60% mb-10">
 				<div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-size-[32px_32px] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
-				<div className="flex items-center justify-center gap-5">
+				<div className="flex flex-col lg:flex-row items-center justify-center gap-5">
 					<div className="flex flex-col items-center gap-10 z-20">
 						<FloatingText showText="Innovative">
 							<p className="text-center font-jetbrains-mono">
@@ -89,7 +89,7 @@ export default function Home() {
 								what's possible.
 							</p>
 						</FloatingText>
-						<h1 className="text-7xl w-full font-inter font-bold text-right">
+						<h1 className="text-5xl lg:text-7xl w-full font-inter font-bold text-right">
 							Software
 						</h1>
 						<FloatingText showText="Deliver Value">
@@ -106,7 +106,7 @@ export default function Home() {
 								I excel at collaborating with teams to achieve common goals.
 							</p>
 						</FloatingText>
-						<h1 className="text-7xl w-full font-inter font-bold text-left">
+						<h1 className="text-5xl lg:text-7xl w-full font-inter font-bold text-left">
 							Engineer
 						</h1>
 						<FloatingText showText="Resilient">
@@ -116,15 +116,15 @@ export default function Home() {
 						</FloatingText>
 					</div>
 				</div>
-				<TypewriterText className="text-3xl font-jetbrains-mono text-platinum-white text-centerd tracking-widest h-7">
+				<TypewriterText className="text-xl lg:text-3xl font-jetbrains-mono text-platinum-white text-centerd tracking-widest h-4 lg:h-7 mt-15 lg:mt-0">
 					John Lloyd Unida
 				</TypewriterText>
 			</div>
 
 			<StickyTimeline />
 
-			<div className="projects flex flex-col items-center w-full h-[calc(100lvh-6rem)] max-h-170 gap-10 mt-20">
-				<h2 className="text-5xl font-inter font-bold text-platinum-white">
+			<div className="projects flex flex-col items-center w-full h-fit min-h-[calc(100lvh-6rem)] gap-10 mt-20">
+				<h2 className="text-5xl font-inter font-bold text-platinum-white text-center">
 					Highlight <span className="text-denim-blue">Projects</span>
 				</h2>
 

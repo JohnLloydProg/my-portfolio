@@ -65,7 +65,7 @@ export default async function ProjectPage({
 		<div className="flex justify-center">
 			<div className="min-h-lvh flex flex-col w-full max-w-6xl mt-10 mb-10">
 				{project.imgs && (
-					<Carousel className=" w-full md:w-7/10 mx-auto" opts={{ loop: true }}>
+					<Carousel className="w-7/10 lg:w-full mx-auto" opts={{ loop: true }}>
 						<CarouselContent>
 							{project.imgs.map((image, index) => (
 								<CarouselItem key={image}>
@@ -85,25 +85,31 @@ export default async function ProjectPage({
 						/>
 					</Carousel>
 				)}
-				<p className="font-semibold text-denim-blue tracking-wider uppercase mb-2 mt-10">
+				<p className="font-semibold text-denim-blue tracking-wider uppercase mb-2 mt-10 text-center lg:text-left">
 					{project.framework}
 				</p>
-				<div className="flex justify-between items-center mb-6">
-					<h1 className="text-7xl font-bold font-inter">{project.name}</h1>
+				<div className="flex flex-col lg:flex-row justify-between items-center mb-6">
+					<h1 className="text-5xl lg:text-7xl font-bold font-inter text-center lg:text-left">
+						{project.name}
+					</h1>
 					<a
 						href="https://google.com/"
-						className="bg-denim-blue px-3 py-1 w-20 text-center rounded-full"
+						className="bg-denim-blue px-3 py-1 w-full lg:w-20 text-center rounded-full mt-5 lg:mt-0"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
 						View
 					</a>
 				</div>
-				<p className="text-lg leading-relaxed">{project.description}</p>
+				<p className="text-lg leading-relaxed text-center lg:text-left">
+					{project.description}
+				</p>
 
 				<div className="flex flex-col w-full mt-10">
-					<h3 className="text-4xl font-bold font-inter">Recent Comments</h3>
-					<div className="flex flex-wrap gap-10 mt-5">
+					<h3 className="text-4xl font-bold font-inter text-center lg:text-left">
+						Recent Comments
+					</h3>
+					<div className="flex flex-wrap justify-center lg:justify-start gap-10 mt-5">
 						{comments.map((comment) => (
 							<div
 								key={comment.date.getTime()}

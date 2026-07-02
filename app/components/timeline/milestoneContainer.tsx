@@ -11,15 +11,10 @@ export default function MilestoneContainer({
 	return (
 		<div
 			id={`milestone-card-${index}`}
-			className={`group absolute flex flex-col items-start shadow-2xl shadow-black/40 border border-denim-blue/30 backdrop-blur-md rounded-2xl p-8 w-2xl bg-linear-to-br from-ocean-navy/95 to-[#0B0C10]/95 overflow-hidden transition-all ${
-				index === 0 ? "opacity-100" : "opacity-0"
-			}`}
-			style={{
-				transform:
-					index === 0
-						? "translateX(0%) scale(1)"
-						: "translateX(110%) scale(0.8)",
-			}}
+			className={`group flex flex-col items-start shadow-2xl shadow-black/40 border border-denim-blue/30 backdrop-blur-md rounded-2xl p-8 w-full max-w-2xl bg-linear-to-br from-ocean-navy/95 to-[#0B0C10]/95 overflow-hidden transition-all 
+            relative lg:absolute 
+            ${index === 0 ? "opacity-100" : "opacity-100 lg:opacity-0"}
+            `}
 		>
 			<div className="absolute -top-24 -right-24 w-48 h-48 bg-denim-blue/10 blur-[50px] rounded-full pointer-events-none" />
 

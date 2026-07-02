@@ -32,7 +32,7 @@ const hobbies: hobby[] = [
 export default function About() {
 	return (
 		<div className="flex flex-col items-center justify-center">
-			<div className="flex items-center gap-5 w-full bg-radial from-denim-blue/60 to-60% max-w-6xl h-lvh max-h-140">
+			<div className="flex flex-col lg:flex-row items-center gap-5 w-full bg-radial from-denim-blue/60 to-60% max-w-6xl h-fit min-h-lvh">
 				<div className="flex flex-col gap-6 text-center md:text-right w-full">
 					<div>
 						<h1 className="text-inter text-4xl md:text-5xl font-bold tracking-tight text-platinum-white">
@@ -48,17 +48,17 @@ export default function About() {
 						<p>Boot up: Sep 27, 2004</p>
 					</div>
 				</div>
-				<div className="min-h-100 min-w-100 relative">
+				<div className="h-full w-2/3 lg:w-full max-h-100 max-w-100 relative p-3">
 					<Image
 						src="/profile.jpg"
 						alt="John Lloyd"
 						width={370}
 						height={370}
-						className="rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+						className="h-full w-full object-contain rounded-full"
 					/>
-					<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-100 h-100 bg-transparent border-6 border-denim-blue rounded-full animate-spin-slow border-dashed"></div>
+					<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-transparent border-6 border-denim-blue rounded-full animate-spin-slow border-dashed"></div>
 				</div>
-				<div className="flex flex-col space-y-6 text-left w-full">
+				<div className="flex flex-col space-y-6 text-center lg:text-left w-full">
 					<p className="text-lg">Glad to see you here!</p>
 					<p className="leading-relaxed">
 						I'm an aspiring software engineer looking to develop all types of
@@ -93,16 +93,17 @@ export default function About() {
 					<span className="text-denim-blue">Events</span> &{" "}
 					<span className="text-denim-blue">Story</span>
 				</h2>
-				<div className="flex w-full mt-15 gap-10">
-					<div className="flex flex-col text-right w-full my-auto">
+				<div className="flex flex-col lg:flex-row w-full mt-15 gap-10">
+					<div className="flex flex-col text-center lg:text-right w-full my-auto">
 						<p>06/15/26 - Now</p>
 						<h3 className="w-full font-inter font-bold text-3xl">
 							Software Engineer Intern
 						</h3>
 						<p className="text-denim-blue text-xl">Stratpoint</p>
 					</div>
-					<div className="w-1 bg-denim-blue" />
-					<div className="flex flex-col text-left w-full gap-5 my-auto">
+					<div className="w-1 bg-denim-blue hidden lg:block" />
+					<div className="h-1 bg-denim-blue w-2/3 mx-auto lg:hidden" />
+					<div className="flex flex-col text-center lg:text-left w-full gap-5 my-auto">
 						<p>
 							I attended Startpoint’s internship program as part of my OJT
 							requirements at college. There I worked on various projects under
@@ -149,8 +150,8 @@ export default function About() {
 					</div>
 				</div>
 
-				<div className="flex w-full mt-10 gap-10">
-					<div className="flex flex-col text-right w-full gap-5 my-auto">
+				<div className="flex flex-col-reverse lg:flex-row w-full mt-10 gap-10">
+					<div className="flex flex-col text-center lg:text-right w-full gap-5 my-auto">
 						<p>
 							This project was a freelance commission for a start up company. I
 							worked on their first ever project with a business client. We were
@@ -162,8 +163,9 @@ export default function About() {
 							project.
 						</p>
 					</div>
-					<div className="w-1 bg-denim-blue" />
-					<div className="flex flex-col text-left w-full my-auto">
+					<div className="w-1 bg-denim-blue hidden lg:block" />
+					<div className="h-1 bg-denim-blue w-2/3 mx-auto lg:hidden" />
+					<div className="flex flex-col text-center lg:text-left w-full my-auto">
 						<p>02/01/26 - 04/20/26</p>
 						<h3 className="w-full font-inter font-bold text-3xl">
 							Full Stack Developer

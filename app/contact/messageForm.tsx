@@ -62,7 +62,7 @@ export default function MessageForm() {
 	return (
 		<form
 			action={formAction}
-			className="bg-ocean-navy border border-denim-blue px-3 py-5 w-8/10 rounded-xl"
+			className="bg-ocean-navy border border-denim-blue px-3 py-5 w-full rounded-xl"
 		>
 			{state.error && (
 				<p className="mb-3 py-3 flex items-center justify-center text-red-500 text-lg text-center bg-red-500/30">

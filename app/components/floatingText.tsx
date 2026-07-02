@@ -49,7 +49,7 @@ export default function FloatingText({
 
 	return (
 		<button
-			className={`group cursor-pointer transition-colors duration-300 border block w-100 h-fit relative p-3 rounded ${isVisible ? "bg-ocean-navy/90 border-denim-blue/40 backdrop-blur-sm" : "bg-transparent border-transparent"}`}
+			className={`group hidden lg:block cursor-pointer transition-colors duration-300 border w-100 h-fit relative p-3 rounded ${isVisible ? "bg-ocean-navy/90 border-denim-blue/40 backdrop-blur-sm" : "bg-transparent border-transparent"}`}
 			onClick={() => setIsVisible(true)}
 			onMouseLeave={() => setIsVisible(false)}
 			type="button"

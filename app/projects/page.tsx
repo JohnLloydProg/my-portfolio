@@ -28,12 +28,12 @@ export default async function Projects() {
 	await new Promise((resolve) => setTimeout(resolve, 1000));
 
 	return (
-		<div className="flex flex-col items-center min-h-lvh">
-			<h1 className="font-inter text-5xl font-bold mt-10">
+		<div className="flex flex-col items-center min-h-lvh h-fit">
+			<h1 className="font-inter text-5xl font-bold mt-10 text-center">
 				Explore <span className="text-pastel-blue">My</span>{" "}
 				<span className="text-denim-blue">Projects</span>
 			</h1>
-			<div className="flex flex-wrap gap-10 max-w-6xl justify-center mt-20">
+			<div className="flex flex-wrap gap-10 max-w-6xl justify-center mt-20 mb-10">
 				{data.map((project) => (
 					<ProjectCard key={project.id} project={project} />
 				))}

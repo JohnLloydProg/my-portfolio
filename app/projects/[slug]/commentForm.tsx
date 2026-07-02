@@ -36,8 +36,10 @@ export default function CommentForm({
 			action={formAction}
 			className="flex flex-col bg-ocean-navy p-5 w-full max-w-4xl mx-auto rounded-xl mt-10"
 		>
-			<h3 className="text-4xl font-bold font-inter">Give me a feedback!</h3>
-			<p className="mt-5">
+			<h3 className="text-4xl font-bold font-inter text-center lg:text-left">
+				Give me a feedback!
+			</h3>
+			<p className="mt-5 text-center lg:text-left">
 				Don't be afraid to share your thoughts, suggestions, and criticisms.
 				Your feedback helps me improve as a developer.
 			</p>
@@ -51,7 +53,7 @@ export default function CommentForm({
 
 			<button
 				type="submit"
-				className="mr-0 mt-10 bg-denim-blue px-4 py-2 rounded-full ml-auto"
+				className="mr-0 mt-10 bg-denim-blue px-4 py-2 rounded-full lg:ml-auto w-full lg:w-fit"
 			>
 				Submit Comment
 			</button>
