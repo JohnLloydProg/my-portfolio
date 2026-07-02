@@ -65,7 +65,7 @@ export default async function ProjectPage({
 		<div className="flex justify-center">
 			<div className="min-h-lvh flex flex-col w-full max-w-6xl mt-10 mb-10">
 				{project.imgs && (
-					<Carousel className="w-7/10 lg:w-full mx-auto" opts={{ loop: true }}>
+					<Carousel className="w-7/10 mx-auto" opts={{ loop: true }}>
 						<CarouselContent>
 							{project.imgs.map((image, index) => (
 								<CarouselItem key={image}>
@@ -93,7 +93,7 @@ export default async function ProjectPage({
 						{project.name}
 					</h1>
 					<a
-						href="https://google.com/"
+						href={project.link}
 						className="bg-denim-blue px-3 py-1 w-full lg:w-20 text-center rounded-full mt-5 lg:mt-0"
 						target="_blank"
 						rel="noopener noreferrer"

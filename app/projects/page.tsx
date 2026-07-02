@@ -56,7 +56,7 @@ export default async function Projects({
 				<span className="text-denim-blue">Projects</span>
 			</h1>
 			<div className="flex flex-wrap gap-5 mt-10 w-full max-w-4xl justify-center">
-				{filters.values().map((filterOption) => (
+				{[...filters].map((filterOption) => (
 					<Link
 						key={filterOption}
 						href={`/projects?filter=${filterOption}`}

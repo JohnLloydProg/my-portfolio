@@ -6,7 +6,14 @@ export default function Loading() {
 				Explore <span className="text-pastel-blue">My</span>{" "}
 				<span className="text-denim-blue">Projects</span>
 			</h1>
-			<div className="flex flex-wrap gap-10 max-w-6xl justify-center mt-20">
+
+			<div className="flex flex-wrap gap-5 mt-10 w-full max-w-4xl justify-center">
+				{containerArray.values().map((num) => (
+					<div key={num} className="rounded-full bg-ocean-navy w-30 h-8" />
+				))}
+			</div>
+
+			<div className="flex flex-wrap gap-10 max-w-6xl justify-center mt-10 mb-10">
 				{containerArray.map((num) => {
 					return (
 						<div
