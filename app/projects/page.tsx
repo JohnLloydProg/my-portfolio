@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import ProjectCard from "./projectCard";
+import Link from "next/link";
 
 // --- INTERFACES ---
 export interface Project {
@@ -23,10 +24,28 @@ const _FILTERS: string[] = [
 	"React Native",
 ];
 
-export default async function Projects() {
+export default async function Projects({
+	searchParams,
+}: {
+	searchParams: Promise<{ filter?: string }>;
+}) {
+	const { filter } = await searchParams;
+
 	const filePath = path.join(process.cwd(), "data", "projects.json");
 	const fileContent = await fs.readFile(filePath, "utf8");
 	const data: Project[] = JSON.parse(fileContent);
+	const filters = new Set<string>();
+
+	for (const project of data) {
+		for (const framework of project.frameworks) filters.add(framework);
+	}
+
+	const projects = data.filter((project) => {
+		if (filter && filter !== "All") {
+			return project.frameworks.includes(filter);
+		}
+		return true;
+	});
 
 	await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -36,8 +55,19 @@ export default async function Projects() {
 				Explore <span className="text-pastel-blue">My</span>{" "}
 				<span className="text-denim-blue">Projects</span>
 			</h1>
-			<div className="flex flex-wrap gap-10 max-w-6xl justify-center mt-20 mb-10">
-				{data.map((project) => (
+			<div className="flex flex-wrap gap-5 mt-10 w-full max-w-4xl justify-center">
+				{filters.values().map((filterOption) => (
+					<Link
+						key={filterOption}
+						href={`/projects?filter=${filterOption}`}
+						className={`border border-denim-blue rounded-full px-2 py-1 transition-all hover:bg-denim-blue ${filterOption === filter ? "bg-denim-blue" : "bg-transparent"}`}
+					>
+						{filterOption}
+					</Link>
+				))}
+			</div>
+			<div className="flex flex-wrap gap-10 max-w-6xl justify-center mt-10 mb-10">
+				{projects.map((project) => (
 					<ProjectCard key={project.id} project={project} />
 				))}
 			</div>
