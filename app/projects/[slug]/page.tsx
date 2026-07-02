@@ -94,7 +94,7 @@ export default async function ProjectPage({
 					</h1>
 					<a
 						href={project.link}
-						className="bg-denim-blue px-3 py-1 w-full lg:w-20 text-center rounded-full mt-5 lg:mt-0"
+						className="bg-denim-blue px-3 py-1 w-full lg:w-30 text-center rounded-full mt-5 lg:mt-0"
 						target="_blank"
 						rel="noopener noreferrer"
 					>

@@ -1,4 +1,5 @@
 export default function Loading() {
+	const containerArray = Array.from({ length: 3 }, (_, i) => i);
 	return (
 		<div className="flex justify-center">
 			<div className="min-h-lvh flex flex-col w-full max-w-6xl mt-10 mb-10 animate-pulse">
@@ -9,6 +10,21 @@ export default function Loading() {
 					<div className="h-12 bg-ocean-navy w-100 mb-6"></div>
 				</div>
 				<div className="h-60 bg-ocean-navy"></div>
+
+				<div className="flex flex-col w-full mt-10">
+					<h3 className="text-4xl font-bold font-inter text-center lg:text-left">
+						Recent Comments
+					</h3>
+					<div className="flex flex-wrap justify-center lg:justify-start gap-10 mt-5">
+						{containerArray.map((num) => (
+							<div
+								key={num}
+								className="bg-ocean-navy w-80 h-30 animate-pulse"
+							></div>
+						))}
+					</div>
+				</div>
+				<div className="bg-ocean-navy w-full max-w-4xl mx-auto rounded-xl mt-10 h-110"></div>
 			</div>
 		</div>
 	);

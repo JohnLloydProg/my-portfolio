@@ -8,8 +8,11 @@ export default function Loading() {
 			</h1>
 
 			<div className="flex flex-wrap gap-5 mt-10 w-full max-w-4xl justify-center">
-				{containerArray.values().map((num) => (
-					<div key={num} className="rounded-full bg-ocean-navy w-30 h-8" />
+				{containerArray.map((num) => (
+					<div
+						key={num}
+						className="rounded-full bg-ocean-navy w-30 h-8 animate-pulse"
+					/>
 				))}
 			</div>
 
