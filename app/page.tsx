@@ -150,7 +150,10 @@ export default async function Home() {
 
 			<StickyTimeline />
 
-			<div className="projects flex flex-col items-center w-full h-fit min-h-[calc(100lvh-6rem)] gap-10 mt-20">
+			<div
+				id="highlight"
+				className="projects flex flex-col items-center w-full h-fit min-h-[calc(100lvh-6rem)] gap-10 mt-20"
+			>
 				<h2 className="text-5xl font-inter font-bold text-platinum-white text-center">
 					Highlight <span className="text-denim-blue">Projects</span>
 				</h2>
@@ -158,7 +161,10 @@ export default async function Home() {
 				<ProjectShowcase projects={highlightedProjects} />
 			</div>
 
-			<div className="projects flex flex-col items-center w-full mb-10 pb-10 mt-20 overflow-hidden">
+			<div
+				id="techStack"
+				className="projects flex flex-col items-center w-full mb-10 pb-10 mt-20 overflow-hidden"
+			>
 				<h2 className="text-5xl font-inter font-bold text-platinum-white">
 					Tech <span className="text-denim-blue">Stack</span>
 				</h2>

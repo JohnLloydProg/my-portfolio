@@ -188,7 +188,11 @@ export default function StickyTimeline() {
 	}, [latest, isDesktop]);
 
 	return (
-		<div ref={trackRef} className="relative w-full lg:h-[400vh] bg-[#0B0C10]">
+		<div
+			id="timeline"
+			ref={trackRef}
+			className="relative w-full lg:h-[400vh] bg-[#0B0C10]"
+		>
 			<div className="lg:sticky flex flex-col w-full lg:top-24 h-fit lg:min-h-[calc(100lvh-6rem)] py-12 lg:py-0">
 				<h2 className="text-4xl lg:text-5xl font-inter font-bold text-platinum-white text-center w-full px-6">
 					<span className="text-denim-blue">Career</span> &{" "}

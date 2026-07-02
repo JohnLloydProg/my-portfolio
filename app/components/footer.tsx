@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
 	return (
@@ -59,173 +60,125 @@ export default function Footer() {
 							/>
 						</a>
 					</div>
-					<p className="text-platinum-white mt-10 lg:text-left text-center">
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum at
-						ab animi quisquam quis vel cupiditate est! Facere distinctio eum
-						corporis sed ipsa ducimus maxime? Voluptatem quam dignissimos
-						dolorum eaque.
+					<p className="text-platinum-white mt-10 lg:text-left text-center italic">
+						"Great developers are made by solving challenges they initially felt
+						unqualified for."
 					</p>
 				</div>
 
 				<div className="flex flex-wrap justify-between items-start gap-8 max-w-6xl mt-10 lg:mt-0">
 					<div className="flex flex-col gap-4 w-30">
-						<h3 className="font-inter text-denim-blue text-lg font-semibold tracking-widest">
+						<Link
+							href="/"
+							className="font-inter text-denim-blue text-lg font-semibold tracking-widest"
+						>
 							Home
-						</h3>
+						</Link>
 						<ul className="flex flex-col gap-3 text-[#8FA0B5] text-base">
 							<li>
-								<a
-									href="/"
-									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
-								>
-									Landing
-								</a>
-							</li>
-							<li>
-								<a
-									href="/"
+								<Link
+									href="/#timeline"
 									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
 								>
 									Career
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
-									href="/"
+								<Link
+									href="/#highlight"
 									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
 								>
 									Projects
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
-									href="/"
+								<Link
+									href="/#techStack"
 									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
 								>
 									Tech Stack
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>
 
 					<div className="flex flex-col gap-4 w-30">
-						<h3 className="font-inter text-denim-blue text-lg font-semibold tracking-widest">
+						<Link
+							href="/about"
+							className="font-inter text-denim-blue text-lg font-semibold tracking-widest"
+						>
 							About Me
-						</h3>
+						</Link>
 						<ul className="flex flex-col gap-3 text-[#8FA0B5] text-base">
 							<li>
-								<a
-									href="/"
+								<Link
+									href="/about#story"
 									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
 								>
-									Landing
-								</a>
+									Story
+								</Link>
 							</li>
 							<li>
-								<a
-									href="/"
+								<Link
+									href="/about#hobbies"
 									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
 								>
-									Career
-								</a>
-							</li>
-							<li>
-								<a
-									href="/"
-									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
-								>
-									Projects
-								</a>
-							</li>
-							<li>
-								<a
-									href="/"
-									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
-								>
-									Tech Stack
-								</a>
+									Hobbies
+								</Link>
 							</li>
 						</ul>
 					</div>
 
 					<div className="flex flex-col gap-4 w-30">
-						<h3 className="font-inter text-denim-blue text-lg font-semibold tracking-widest">
+						<Link
+							href="/projects"
+							className="font-inter text-denim-blue text-lg font-semibold tracking-widest"
+						>
 							Projects
-						</h3>
+						</Link>
 						<ul className="flex flex-col gap-3 text-[#8FA0B5] text-base">
 							<li>
-								<a
-									href="/"
+								<Link
+									href="/projects?filter=Django"
 									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
 								>
-									Landing
-								</a>
+									Django
+								</Link>
 							</li>
 							<li>
-								<a
-									href="/"
+								<Link
+									href="/projects?filter=Angular"
 									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
 								>
-									Career
-								</a>
+									Angular
+								</Link>
 							</li>
 							<li>
-								<a
-									href="/"
+								<Link
+									href="/projects?filter=Kivy"
 									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
 								>
-									Projects
-								</a>
+									Kivy
+								</Link>
 							</li>
 							<li>
-								<a
-									href="/"
+								<Link
+									href="/projects?filter=Firebase"
 									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
 								>
-									Tech Stack
-								</a>
+									Firebase
+								</Link>
 							</li>
 						</ul>
 					</div>
 
 					<div className="flex flex-col gap-4 w-30">
-						<h3 className="font-inter text-denim-blue text-lg font-semibold tracking-widest">
+						<Link
+							href="/contact"
+							className="font-inter text-denim-blue text-lg font-semibold tracking-widest"
+						>
 							Contact
-						</h3>
-						<ul className="flex flex-col gap-3 text-[#8FA0B5] text-base">
-							<li>
-								<a
-									href="/"
-									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
-								>
-									Landing
-								</a>
-							</li>
-							<li>
-								<a
-									href="/"
-									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
-								>
-									Career
-								</a>
-							</li>
-							<li>
-								<a
-									href="/"
-									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
-								>
-									Projects
-								</a>
-							</li>
-							<li>
-								<a
-									href="/"
-									className="transition-all border-l-2 hover:text-platinum-white hover:bg-white/5 px-2 py-1 hover:border-denim-blue hover:pl-3"
-								>
-									Tech Stack
-								</a>
-							</li>
-						</ul>
+						</Link>
 					</div>
 				</div>
 			</div>

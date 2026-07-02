@@ -93,7 +93,10 @@ export default function About() {
 					<p className="text-lg font-bold tracking-wider">Collaborative</p>
 				</HorizontalSlide>
 			</div>
-			<div className="events flex flex-col w-full max-w-6xl items-center">
+			<div
+				id="story"
+				className="events flex flex-col w-full max-w-6xl items-center"
+			>
 				<h2 className="text-5xl font-inter font-bold text-platinum-white text-center">
 					<span className="text-denim-blue">Events</span> &{" "}
 					<span className="text-denim-blue">Story</span>
@@ -199,7 +202,10 @@ export default function About() {
 					</div>
 				</div>
 			</div>
-			<div className="hobbies flex flex-col my-20 w-full overflow-hidden">
+			<div
+				id="hobbies"
+				className="hobbies flex flex-col my-20 w-full overflow-hidden"
+			>
 				<h2 className="text-5xl font-inter font-bold text-platinum-white text-center">
 					My <span className="text-denim-blue">Hobbies</span>
 				</h2>
