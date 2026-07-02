@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import ProjectCard from "./projectCard";
 import Link from "next/link";
+import ProjectCard from "./projectCard";
 
 // --- INTERFACES ---
 export interface Project {
