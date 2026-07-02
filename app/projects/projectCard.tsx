@@ -13,10 +13,10 @@ export default function ProjectCard({ project }: { project: Project }) {
 				{project.name}
 			</p>
 			<Image
-				src="/projects/state-of-dance.png"
+				src={project.thumbnail}
 				width={280}
 				height={280}
-				alt="next"
+				alt={project.name}
 				className="w-full aspect-video object-contain grayscale group-hover:grayscale-0"
 			/>
 		</Link>

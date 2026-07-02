@@ -3,56 +3,48 @@
 import { animate } from "animejs";
 import { useEffect, useRef, useState } from "react";
 import type { milestone } from "../../interfaces/milestone";
+import { useWindowWidth } from "../navBar";
 import MilestoneContainer from "./milestoneContainer";
 import TimelineDot from "./timelineDot";
-import { useWindowWidth } from "../navBar";
 
 const milestones: milestone[] = [
 	{
-		year: "2021",
+		year: "2019",
 		position: "The Beginning",
-		company: "testing",
-		logo: "/globe.svg",
+		company: "Self-Taught",
 		description:
-			"Started the programming journey and foundational computer science studies.",
+			"Started the programming journey and foundational computer science studies. Explored Python and created simple programs.",
 	},
 	{
-		year: "2023",
-		position: "Full-Stack Foundations",
-		company: "testing",
+		year: "2021",
+		position: "Freelance Game Developer",
+		company: "Fiverr",
+		logo: "/icons/fiverr-logo.svg",
 		description:
-			"Began building web applications and exploring database architectures.",
+			"Wanted to gain practical experience, so I started taking on small freelance projects, primarily in game development. It was a great way to learn about other technologies and frameworks, and I was able to build a portfolio of work.",
 	},
 	{
-		year: "2024",
-		position: "System Architecture",
-		company: "testing",
-		logo: "/globe.svg",
+		year: "2022",
+		position: "Freelance Software Developer",
+		company: "Upwork",
+		logo: "/icons/upwork-logo.svg",
 		description:
-			"Expanded into distributed systems, containerization, and advanced API design.",
-	},
-	{
-		year: "2025",
-		position: "Facility Management App",
-		company: "testing",
-		description:
-			"Designed and developed a shared study space management system with room reservation logic.",
+			"Leveled up my skills and started taking on more complex projects, including web development and software engineering. I learned about different programming languages, frameworks, and tools.",
 	},
 	{
 		year: "2026",
-		position: "Academic Research",
-		company: "testing",
-		logo: "/globe.svg",
+		position: "Full-Stack Developer",
+		company: "JAC R&D in IT",
 		description:
-			"Architecting closed-system transit graph simulations and epidemic interventions.",
+			"Spearheaded the development of a dance class management system, overseeing both front-end and back-end development. Implemented features such as class scheduling, student management, and payment processing.",
 	},
 	{
 		year: "Now",
-		position: "Freelance Developer",
-		company: "testing",
-		logo: "/globe.svg",
+		position: "SE Intern",
+		company: "Stratpoint",
+		logo: "/icons/stratpoint-logo.jpg",
 		description:
-			"Delivering full-stack client solutions and building scalable web infrastructure.",
+			"First work as part of a corporate team. Part of my On The Job Training (OJT) for my college degree. Gained experience in working with a team, following best practices, and using version control systems.",
 	},
 ];
 

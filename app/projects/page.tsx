@@ -6,9 +6,12 @@ import ProjectCard from "./projectCard";
 export interface Project {
 	id: string;
 	name: string;
-	framework: string;
+	frameworks: string[];
 	description: string;
+	thumbnail: string;
 	imgs?: string[];
+	link: string;
+	highlight?: boolean;
 }
 
 // --- MOCK DATA ---

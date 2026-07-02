@@ -1,3 +1,5 @@
+import { promises as fs } from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
 import FloatingText from "./components/floatingText";
 import HorizontalSlide, { type tech } from "./components/horizontalSlide";
@@ -6,6 +8,7 @@ import ProjectShowcase from "./components/projectShowcase";
 import { TechCard } from "./components/techCard";
 import StickyTimeline from "./components/timeline/timeline";
 import TypewriterText from "./components/typewriterText";
+import type { Project } from "./projects/page";
 
 // Hello from John Lloyd
 
@@ -76,7 +79,31 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function Home() {
+export default async function Home() {
+	//Getting project details
+	const filePath = path.join(process.cwd(), "data", "projects.json");
+	const fileContent = await fs.readFile(filePath, "utf8");
+	const projects: Project[] = JSON.parse(fileContent);
+	const highlightedProjects = projects.filter(
+		(project) => project.highlight === true,
+	);
+
+	for (const project of highlightedProjects) {
+		try {
+			//Getting images
+			const projectImagesPath = path.join(
+				process.cwd(),
+				"public",
+				"projects",
+				project.id,
+			);
+			const files = await fs.readdir(projectImagesPath, "utf8");
+			project.imgs = files.map((name) => `/projects/${project.id}/${name}`);
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
 	return (
 		<div className="flex flex-col items-center justify-center">
 			<div className="landing flex flex-col h-lvh w-9/10 items-center justify-center bg-radial from-denim-blue/60 to-60% mb-10">
@@ -128,7 +155,7 @@ export default function Home() {
 					Highlight <span className="text-denim-blue">Projects</span>
 				</h2>
 
-				<ProjectShowcase />
+				<ProjectShowcase projects={highlightedProjects} />
 			</div>
 
 			<div className="projects flex flex-col items-center w-full mb-10 pb-10 mt-20 overflow-hidden">

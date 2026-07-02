@@ -86,7 +86,7 @@ export default async function ProjectPage({
 					</Carousel>
 				)}
 				<p className="font-semibold text-denim-blue tracking-wider uppercase mb-2 mt-10 text-center lg:text-left">
-					{project.framework}
+					{project.frameworks.join(" | ")}
 				</p>
 				<div className="flex flex-col lg:flex-row justify-between items-center mb-6">
 					<h1 className="text-5xl lg:text-7xl font-bold font-inter text-center lg:text-left">

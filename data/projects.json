@@ -1,38 +1,46 @@
 [
 	{
 		"id": "p1",
-		"name": "E-Commerce Dashboard",
-		"framework": "React.js",
-		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum."
+		"name": "State of Dance Website",
+		"description": "A dance class management system that allows users to view and register for dance classes, as well as manage their accounts and payments. The system also allows administrators to manage classes, instructors, and students.",
+		"frameworks": ["Django", "Angular", "AWS EC2"],
+		"link": "https://www.stateofdance.co/",
+		"thumbnail": "/projects/p1/home.png",
+		"highlight": true
 	},
 	{
 		"id": "p2",
-		"name": "Anime Tracker",
-		"framework": "Next.js",
-		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum."
+		"name": "Gym Management System",
+		"description": "A gym management system that tracks and manages attendances, subscriptions, and training schedules. The system also allows administrators to manage gym members, trainers, and classes.",
+		"frameworks": ["Django", "React-Native", "Kivy", "GCloud"],
+		"link": "https://github.com/JohnLloydProg/Triple-J-Desktop",
+		"thumbnail": "/projects/p2/desktop.png",
+		"highlight": true
 	},
 	{
 		"id": "p3",
-		"name": "Auth Microservice",
-		"framework": "Node.js",
-		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum."
+		"name": "Physics Simulation",
+		"description": "A physics simulation that allows users to visualize and interact with various physics concepts, such as gravity, friction, and collisions.",
+		"frameworks": ["Pygame", "Pymunk"],
+		"link": "https://github.com/JohnLloydProg/Physics_Simulation",
+		"thumbnail": "/projects/p3/thumbnail.png",
+		"highlight": true
 	},
 	{
 		"id": "p4",
-		"name": "Payment Gateway API",
-		"framework": "Node.js",
-		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum."
+		"name": "ClubDawg",
+		"frameworks": ["JavaFX", "Firebase"],
+		"description": "ClubDawg is a social application with gamification elements such as a Space Invaders-esque game, a Flappy Bird-like, and a RNG-based customization system. It utilizes Firebase to incorporate real-time chatting, personalized rooms, leaderboards, and file sharing.",
+		"link": "https://github.com/JohnLloydProg/ClubDawgs",
+		"thumbnail": "/projects/p4/home.png",
+		"highlight": true
 	},
 	{
 		"id": "p5",
-		"name": "Fitness App",
-		"framework": "React Native",
-		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum."
-	},
-	{
-		"id": "p6",
-		"name": "Portfolio V2",
-		"framework": "Next.js",
-		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum."
+		"name": "Lost and Found",
+		"frameworks": ["Kivy", "Supabase"],
+		"description": "A simple lost and found system that allows users to report lost and found items, as well as view and claim items. The system also allows administrators to manage reported items and users.",
+		"link": "https://github.com/JohnLloydProg/LostAndFound",
+		"thumbnail": "/projects/state-of-dance.png"
 	}
 ]

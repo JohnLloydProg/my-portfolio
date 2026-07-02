@@ -12,48 +12,10 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
+import type { Project } from "../projects/page";
 
-interface project {
-	title: string;
-	description: string;
-	techs: string[];
-	imgs: string[];
-	link: string;
-}
-
-const projects: project[] = [
-	{
-		title: "State of Dance Website",
-		description: "Testing",
-		techs: ["Django", "Angular"],
-		imgs: ["/next.svg", "/globe.svg", "/file.svg"],
-		link: "https://google.com/",
-	},
-	{
-		title: "State of Dance Website 1",
-		description: "Testing",
-		techs: ["Django", "Angular"],
-		imgs: ["/next.svg", "/globe.svg", "/file.svg"],
-		link: "https://google.com/",
-	},
-	{
-		title: "State of Dance Website 2",
-		description: "Testing",
-		techs: ["Django", "Angular"],
-		imgs: ["/next.svg", "/globe.svg", "/file.svg"],
-		link: "https://google.com/",
-	},
-	{
-		title: "State of Dance Website 3",
-		description: "Testing",
-		techs: ["Django", "Angular"],
-		imgs: ["/next.svg", "/globe.svg", "/file.svg"],
-		link: "https://google.com/",
-	},
-];
-
-export default function ProjectShowcase() {
-	const [selected, setSelected] = useState<project>(projects[0]);
+export default function ProjectShowcase({ projects }: { projects: Project[] }) {
+	const [selected, setSelected] = useState<Project>(projects[0]);
 
 	useEffect(() => {
 		animate(".stagger-item", {
@@ -71,16 +33,16 @@ export default function ProjectShowcase() {
 				<h4 className="font-jetbrains-mono text-platinum-white text-xl text-center">
 					Projects
 				</h4>
-				<ul className="flex flex-col items-center mt-5">
+				<ul className="flex flex-col items-center lg:items-start mt-5">
 					{projects.map((project) => {
 						return (
 							<button
-								key={project.title}
+								key={project.name}
 								type="button"
-								className={`cursor-pointer font-inter not-last:mb-3 text-left transition-colors border-l-2 px-4 py-2 ${project === selected ? "border-denim-blue bg-white/5 text-platinum-white" : "border-transparent text-[#8FA0B5] hover:text-platinum-white hover:border-denim-blue hover:bg-white/5"}`}
+								className={`cursor-pointer font-inter not-last:mb-3 w-full text-left transition-colors border-l-2 px-4 py-2 ${project === selected ? "border-denim-blue bg-white/5 text-platinum-white" : "border-transparent text-[#8FA0B5] hover:text-platinum-white hover:border-denim-blue hover:bg-white/5"}`}
 								onClick={() => setSelected(project)}
 							>
-								{project.title}
+								{project.name}
 							</button>
 						);
 					})}
@@ -88,37 +50,40 @@ export default function ProjectShowcase() {
 			</div>
 			<div className="showCase w-full h-fit flex items-center justify-center bg-ocean-navy border border-denim-blue/40 rounded-xl p-5">
 				<div className="w-full h-fit flex flex-col">
-					<div className="flex w-full justify-center">
-						<Carousel className="w-65/100 stagger-item" opts={{ loop: true }}>
-							<CarouselContent>
-								{selected.imgs.map((image, index) => (
-									<CarouselItem key={image}>
-										<div className="relative w-full max-w-2xl aspect-video bg-amber-400 rounded-xl">
-											<Image
-												src={image}
-												alt={`${selected.title}-${index}`}
-												fill
-											/>
-										</div>
-									</CarouselItem>
-								))}
-							</CarouselContent>
-							<CarouselPrevious
-								size="icon-lg"
-								className="rounded-full bg-obsidian-black/80 hover:bg-denim-blue text-platinum-white border-2 border-platinum-white shadow-lg backdrop-blur-sm transition-all hover:scale-110"
-							/>
-							<CarouselNext
-								size="icon-lg"
-								className="rounded-full bg-obsidian-black/80 hover:bg-denim-blue text-platinum-white border-2 border-platinum-white shadow-lg backdrop-blur-sm transition-all hover:scale-110"
-							/>
-						</Carousel>
-					</div>
+					{selected.imgs && (
+						<div className="flex w-full justify-center">
+							<Carousel className="w-65/100 stagger-item" opts={{ loop: true }}>
+								<CarouselContent>
+									{selected.imgs.map((image, index) => (
+										<CarouselItem key={image}>
+											<div className="relative w-full max-w-2xl aspect-video bg-obsidian-black/50 rounded-xl overflow-hidden">
+												<Image
+													src={image}
+													alt={`${selected.name}-${index}`}
+													fill
+													className="object-contain"
+												/>
+											</div>
+										</CarouselItem>
+									))}
+								</CarouselContent>
+								<CarouselPrevious
+									size="icon-lg"
+									className="rounded-full bg-obsidian-black/80 hover:bg-denim-blue text-platinum-white border-2 border-platinum-white shadow-lg backdrop-blur-sm transition-all hover:scale-110"
+								/>
+								<CarouselNext
+									size="icon-lg"
+									className="rounded-full bg-obsidian-black/80 hover:bg-denim-blue text-platinum-white border-2 border-platinum-white shadow-lg backdrop-blur-sm transition-all hover:scale-110"
+								/>
+							</Carousel>
+						</div>
+					)}
 					<div className="flex flex-col lg:flex-row mt-5 items-center gap-2 lg:gap-10">
 						<h3 className="font-inter font-bold text-2xl text-platinum-white stagger-item">
-							{selected.title}
+							{selected.name}
 						</h3>
 						<div className="flex items-center gap-5">
-							{selected.techs.map((badge) => (
+							{selected.frameworks.map((badge) => (
 								<Badge key={badge} className="rounded-full stagger-item">
 									{badge}
 								</Badge>

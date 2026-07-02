@@ -135,12 +135,14 @@ export default function NavBar() {
 					</Link>
 				</ul>
 			</nav>
-			<button
+			<a
+				href="/Resume.pdf"
+				download="Resume.pdf"
 				className="bg-denim-blue font-jetbrains-mono text-obsidian-black px-4 py-2 rounded-full hover:bg-denim-blue/80 transition-all"
 				type="button"
 			>
 				<p>Resume</p>
-			</button>
+			</a>
 		</header>
 	);
 }
